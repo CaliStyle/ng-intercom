@@ -1,9 +1,9 @@
 
 export class IntercomBrowser {
-  init() {
+  init (data) {
     (<any> window).Intercom("boot", data);
   }
-  boot(data) {
+  boot (data) {
     (<any> window).Intercom("boot", data);
   }
   update (data) {
