@@ -5,7 +5,7 @@ It supports all intercom methods.
 
 ## Configuration
 
-```js
+```ts
 // Bootstrap
 
 import { BROWSER_INTERCOM_PROVIDERS } from './browser';
@@ -19,15 +19,13 @@ bootstrap(AppComponent, [
 
 ```
 
-```js
+```ts
 // App
 ...
 import { Intercom } from './intercom';
 
 @Component({
   selector: 'app',
-  providers: ...,
-  directives: ...,
   template: ...
   `
 })
