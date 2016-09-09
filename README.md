@@ -26,8 +26,7 @@ import { Intercom } from './intercom';
 
 @Component({
   selector: 'app',
-  template: ...
-  `
+  template: `...`
 })
 export class AppComponent implements OnInit {
   constructor(private intercom: Intercom){ }
