@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 
 // Abstract Class to Catch implementations
-export class IntercomEnviroment {
+export class IntercomEnvironment {
   init(data: Object): any {
-    throw new Error('Error init IntercomEnviroment')
+    throw new Error('Error init IntercomEnvironment')
   }
   boot(data: Object): any {
-    throw new Error('Error boot IntercomEnviroment')
+    throw new Error('Error boot IntercomEnvironment')
   }
   update(data: Object): any {
-    throw new Error('Error update IntercomEnviroment')
+    throw new Error('Error update IntercomEnvironment')
   }
   shutdown() {
-    throw new Error('Error shutdown IntercomEnviroment')
+    throw new Error('Error shutdown IntercomEnvironment')
   }
 }
-// Intercom -> IntercomEnviroment
+// Intercom -> IntercomEnvironment
 @Injectable()
 export class Intercom {
-  constructor(public intercom: IntercomEnviroment){}
+  constructor(public intercom: IntercomEnvironment){}
 
   init(data){
     return this.intercom.init(data);

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "ES5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true
+  },
+  "paths": {
+    "@angular": [
+      "./node_modules/@angular"
+    ]
+  },
+  "files": [
+    "ng-intercom.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
