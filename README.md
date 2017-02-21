@@ -1,6 +1,7 @@
-# Angular2 Intercom
+# ng-intercom
 
-This is an Intercom wrapper for Angular2 that also works with angular-universal
+This is an Intercom wrapper for Angular ^2 with dependency injection for universal applications.
+
 It supports all intercom methods.
 
 ## Configuration
@@ -8,7 +9,7 @@ It supports all intercom methods.
 ```ts
 // Bootstrap
 
-import { BROWSER_INTERCOM_PROVIDERS } from './browser';
+import { BROWSER_INTERCOM_PROVIDERS } from './ng-intercom/ng-intercom';
 
 import { AppComponent } from './app';
 
@@ -22,14 +23,16 @@ bootstrap(AppComponent, [
 ```ts
 // App
 ...
-import { Intercom } from './intercom';
+import { Intercom } from './ng-intercom/ng-intercom';
 
 @Component({
   selector: 'app',
   template: `...`
 })
 export class AppComponent implements OnInit {
-  constructor(private intercom: Intercom){ }
+  constructor(
+    private intercom: Intercom
+  ){}
 
   ngOnInit() {
     this.intercom.init({
@@ -41,5 +44,4 @@ export class AppComponent implements OnInit {
     });
   }
 }
-
 ```
