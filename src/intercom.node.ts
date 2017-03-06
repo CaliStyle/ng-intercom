@@ -1,15 +1,15 @@
 
 export class IntercomNode {
-  init (data) {
+  init(data: object) {
     // throw new Error('Error init IntercomNode')
   }
-  boot (data) {
+  boot(data: object) {
     // throw new Error('Error boot IntercomNode')
   }
-  update (data) {
+  update(data: object) {
     // throw new Error('Error update IntercomNode')
   }
-  shutdown () {
+  shutdown() {
     // throw new Error('Error shutdown IntercomNode')
   }
 }

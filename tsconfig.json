@@ -13,8 +13,8 @@
       "./node_modules/@angular"
     ]
   },
-  "files": [
-    "ng-intercom.ts"
+  "include": [
+    "src/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,7 +1,5 @@
-import { IntercomNode } from './intercom.node'
-import { Intercom, IntercomEnvironment} from './intercom'
-
-import { provide } from '@angular/core'
+import { IntercomNode } from './intercom.node';
+import { Intercom, IntercomEnvironment } from './intercom';
 
 export const NODE_INTERCOM_PROVIDERS = [
   IntercomNode,
