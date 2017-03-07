@@ -1,29 +1,35 @@
 # ng-intercom
 
-This is an Intercom wrapper for Angular ^2 with dependency injection for universal applications.
+This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
 It supports all intercom methods.
+
+## Installation
+
+This package is on NPM, so just run `npm install ng-intercom`.
 
 ## Configuration
 
 ```ts
-// Bootstrap
+// Add the module
 
-import { BROWSER_INTERCOM_PROVIDERS } from './ng-intercom/ng-intercom';
+import { IntercomModule } from 'ng-intercom';
 
 import { AppComponent } from './app';
 
-bootstrap(AppComponent, [
-  ...BROWSER_INTERCOM_PROVIDERS
-])
-.catch(err => console.error(err));
+@NgModule({
+  imports: [
+    IntercomModule.forRoot()
+  ]
+})
+export class AppModule{}
 
 ```
 
 ```ts
 // App
 ...
-import { Intercom } from './ng-intercom/ng-intercom';
+import { Intercom } from 'ng-intercom';
 
 @Component({
   selector: 'app',

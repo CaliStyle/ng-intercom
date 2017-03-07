@@ -1,8 +1,8 @@
 {
   "name": "ng-intercom",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "An Intercom wrapper for Angular",
-  "main": "intercom.ts",
+  "main": "index",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CaliStyle/angular2-intercom.git"
@@ -12,16 +12,22 @@
     "Angular"
   ],
   "author": "scott-wyatt",
+  "contributors": [
+    "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CaliStyle/angular2-intercom/issues"
   },
   "homepage": "https://github.com/CaliStyle/angular2-intercom#readme",
-  "dependencies": {
-    "@angular/core": "^2.4.8"
+  "peerDependencies": {
+    "@angular/core": "*"
   },
   "devDependencies": {
-    "typescript": "^2.1.6"
+    "@angular/core": "^4.0.0-rc.2",
+    "rxjs": "^5.2.0",
+    "typescript": "^2.2.0",
+    "zone.js": "^0.7.7"
   },
-  "typings": "./ng-intercom.d.ts"
+  "typings": "./index.d.ts"
 }
