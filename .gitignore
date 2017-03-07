@@ -6,6 +6,9 @@ npm-debug.log
 Thumbs.db
 .DS_Store
 # Ignored files
+dist
+.vscode
 *.js
 *.map
 *.d.ts
+!index.d.ts

@@ -10,7 +10,7 @@ It supports all intercom methods.
 
 This package is on NPM, so just run
  ```sh
-$ npm install ng-intercom
+$ npm install ng-intercom --save
  ```
 
 ## Configuration
@@ -57,6 +57,10 @@ export class AppComponent implements OnInit {
 }
 ```
 
+## Development
+To compile, just run tsc. It will compile into the dist directory. 
+
+When publishing to NPM, make sure to compile first, and ignore src.
+
 [npm-image]: https://img.shields.io/npm/v/ng-intercom.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ng-intercom
-
