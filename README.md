@@ -1,12 +1,17 @@
 # ng-intercom
 
+[![NPM version][npm-image]][npm-url]
+
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
 It supports all intercom methods.
 
 ## Installation
 
-This package is on NPM, so just run `npm install ng-intercom`.
+This package is on NPM, so just run
+ ```sh
+$ npm install ng-intercom
+ ```
 
 ## Configuration
 
@@ -51,3 +56,7 @@ export class AppComponent implements OnInit {
   }
 }
 ```
+
+[npm-image]: https://img.shields.io/npm/v/ng-intercom.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ng-intercom
+
