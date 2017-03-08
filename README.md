@@ -58,9 +58,11 @@ export class AppComponent implements OnInit {
 ```
 
 ## Development
-To compile, just run tsc. It will compile into the dist directory. 
+To compile, just run `npm run build`. It will compile into the dist directory. 
 
-When publishing to NPM, make sure to compile first, and ignore src.
+
+## Distribution
+When publishing to NPM, make sure to `npm run build` first, and ignore src. Then type `cd dist` and `npm publish`.
 
 [npm-image]: https://img.shields.io/npm/v/ng-intercom.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ng-intercom

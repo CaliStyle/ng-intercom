@@ -1,11 +1,11 @@
 export class IntercomBrowser {
-  init(data) {
+  init(data: object) {
     (<any>window).Intercom("boot", data);
   }
-  boot(data) {
+  boot(data: object) {
     (<any>window).Intercom("boot", data);
   }
-  update(data) {
+  update(data: object) {
     (<any>window).Intercom("update", data);
   }
   shutdown() {
