@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
+    "noEmitOnError": true,
     "module": "commonjs",
-    "target": "ES5",
+    "target": "ES2016",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "dist"
-  },
-  "paths": {
-    "@angular": [
-      "./node_modules/@angular"
+    "outDir": "dist",
+    "lib": [
+      "es6",
+      "dom"
     ]
   },
   "include": [
@@ -19,5 +19,14 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "skipMetadataEmit": false,
+    "genDir": "dist"
+  },
+  "paths": {
+    "@angular": [
+      "./node_modules/@angular"
+    ]
+  }
 }

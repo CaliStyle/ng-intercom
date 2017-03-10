@@ -11,6 +11,9 @@ export class IntercomEnvironment {
   update(data: object): any {
     throw new Error('Error update IntercomEnvironment')
   }
+  trackEvent(eventName: string, data: any) {
+    throw new Error('Error trackEvent IntercomEnvironment')
+  }
   shutdown() {
     throw new Error('Error shutdown IntercomEnvironment')
   }
@@ -28,6 +31,9 @@ export class Intercom {
   }
   update(data: object) {
     return this.intercom.update(data);
+  }
+  trackEvent(eventName: string, data: any) {
+    (<any>window).Intercom('trackEvent', eventName, data);
   }
   shutdown() {
     return this.intercom.shutdown();

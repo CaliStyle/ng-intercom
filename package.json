@@ -12,7 +12,7 @@
     "Angular"
   ],
   "scripts": {
-    "build": "tsc; cp package.json dist/package.json; cp README.md dist/README.md"
+    "build": "./node_modules/.bin/ngc"
   },
   "author": "scott-wyatt",
   "contributors": [
@@ -24,10 +24,14 @@
   },
   "homepage": "https://github.com/CaliStyle/angular2-intercom#readme",
   "peerDependencies": {
-    "@angular/core": "*"
+    "@angular/core": "*",
+    "@angular/common": "*"
   },
   "devDependencies": {
-    "@angular/core": "^4.0.0-rc.2",
+    "@angular/common": "^4.0.0-rc.3",
+    "@angular/compiler": "^4.0.0-rc.3",
+    "@angular/compiler-cli": "^4.0.0-rc.3",
+    "@angular/core": "^4.0.0-rc.3",
     "rxjs": "^5.2.0",
     "typescript": "^2.2.0",
     "zone.js": "^0.7.7"
