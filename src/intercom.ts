@@ -23,19 +23,19 @@ export class IntercomEnvironment {
 export class Intercom {
   constructor(public intercom: IntercomEnvironment) { }
 
-  init(data: object) {
+  public init(data: object) {
     return this.intercom.init(data);
   }
-  boot(data: object) {
+  public boot(data: object) {
     return this.intercom.boot(data);
   }
-  update(data: object) {
+  public update(data: object) {
     return this.intercom.update(data);
   }
-  trackEvent(eventName: string, data: any) {
-    (<any>window).Intercom('trackEvent', eventName, data);
+  public trackEvent(eventName: string, data: any) {
+    return this.intercom.trackEvent(eventName, data);
   }
-  shutdown() {
+  public shutdown() {
     return this.intercom.shutdown();
   }
 }

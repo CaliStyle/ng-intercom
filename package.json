@@ -1,6 +1,6 @@
 {
   "name": "ng-intercom",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An Intercom wrapper for Angular",
   "main": "index",
   "repository": {
@@ -12,7 +12,7 @@
     "Angular"
   ],
   "scripts": {
-    "build": "./node_modules/.bin/ngc"
+    "build": "./node_modules/.bin/ngc; cp package.json dist/package.json; cp README.md dist/README.md"
   },
   "author": "scott-wyatt",
   "contributors": [

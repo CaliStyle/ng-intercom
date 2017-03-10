@@ -1,1 +1,2 @@
-export { Intercom, IntercomModule } from './module';
+export { IntercomModule } from './module';
+export { Intercom } from './intercom';
