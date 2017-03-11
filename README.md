@@ -42,7 +42,7 @@ import { Intercom } from 'ng-intercom';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private intercom: Intercom
+    public intercom: Intercom
   ){}
 
   ngOnInit() {
