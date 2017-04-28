@@ -13,8 +13,8 @@
   ],
   "scripts": {
     "clear-lib": "rimraf lib",
-    "ngc-build": "ngc -p ./tsconfig.json",
-    "prepublish": "npm run clear-lib && npm run ngc-build"
+    "build": "ngc -p ./tsconfig.json",
+    "prepublish": "npm run clear-lib && npm run build"
   },
   "author": "scott-wyatt",
   "contributors": [
