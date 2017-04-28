@@ -12,9 +12,7 @@
     "Angular"
   ],
   "scripts": {
-    "clear-lib": "rimraf lib",
-    "build": "ngc -p ./tsconfig.json",
-    "prepublish": "npm run clear-lib && npm run build"
+    "install": "ngc -p ./tsconfig.json"
   },
   "author": "scott-wyatt",
   "contributors": [
@@ -34,7 +32,6 @@
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
-    "rimraf": "^2.6.1",
     "rxjs": "^5.2.0",
     "typescript": "^2.2.0",
     "zone.js": "^0.8.4"
