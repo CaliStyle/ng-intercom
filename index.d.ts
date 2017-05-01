@@ -1,1 +1,1 @@
-export { Intercom, IntercomModule } from './dist/index';
+export { Intercom, IntercomModule } from './src/index';
