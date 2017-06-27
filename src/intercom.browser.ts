@@ -12,6 +12,9 @@ export class IntercomBrowser {
   trackEvent(eventName: string, data: any) {
     (<any>window).Intercom('trackEvent', eventName, data);
   }
+  show() {
+    (<any>window).Intercom('show');
+  }
   shutdown() {
     (<any>window).Intercom("shutdown");
   }
