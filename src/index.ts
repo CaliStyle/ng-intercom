@@ -1,2 +1,3 @@
-export { IntercomModule } from './module';
-export { Intercom } from './intercom';
+export { IntercomModule } from './intercom.module';
+export { Intercom } from './providers/intercom';
+export { IntercomConfig } from './types/intercom-config';

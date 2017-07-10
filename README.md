@@ -6,6 +6,9 @@ This is an Intercom wrapper for Angular 2+ with dependency injection for univers
 
 It supports all intercom methods.
 
+### ALPHA VERSION
+If you want to try the latest features, please see the `1.0.0-alpha` branch.
+
 ### Installation
 
 This package is on NPM, so just run

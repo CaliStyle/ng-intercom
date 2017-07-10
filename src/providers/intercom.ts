@@ -1,28 +1,10 @@
-import { IntercomBrowser } from './intercom.browser';
 import { Injectable } from '@angular/core';
 
-// Abstract Class to Catch implementations
-// export class IntercomEnvironment {
-//   init(data: object): any {
-//     throw new Error('Error init IntercomEnvironment')
-//   }
-//   boot(data: object): any {
-//     throw new Error('Error boot IntercomEnvironment')
-//   }
-//   update(data: object): any {
-//     throw new Error('Error update IntercomEnvironment')
-//   }
-//   trackEvent(eventName: string, data: any) {
-//     throw new Error('Error trackEvent IntercomEnvironment')
-//   }
-//   show() {
-//     throw new Error('Error show IntercomEnvironment')
-//   }
-//   shutdown() {
-//     throw new Error('Error shutdown IntercomEnvironment')
-//   }
-// }
-// Intercom -> IntercomEnvironment
+/**
+ * @description A provider with every Intercom.JS method
+ * @export
+ * @class Intercom
+ */
 @Injectable()
 export class Intercom {
   constructor() { }
@@ -115,11 +97,11 @@ export class Intercom {
    * @param {string} message 
    * @memberof Intercom
    */
-  showNewMessage(message: string) {
+  showNewMessage(message?: string) {
     if (message) {
-      return (<any>window).Intercom('showNewMessage');
-    } else {
       return (<any>window).Intercom('showNewMessage', message);
+    } else {
+      return (<any>window).Intercom('showNewMessage');
     }
   }
 

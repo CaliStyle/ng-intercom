@@ -25,6 +25,7 @@
     "./src/module.ts"
   ],
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true
+    "skipTemplateCodegen": true,
+    "experimentalDecorators": true
   }
 }
