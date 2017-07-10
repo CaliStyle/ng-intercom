@@ -1,4 +1,4 @@
-# ng-intercom
+# Angular Intercom
 
 [![NPM version][npm-image]][npm-url]
 
@@ -6,14 +6,14 @@ This is an Intercom wrapper for Angular 2+ with dependency injection for univers
 
 It supports all intercom methods.
 
-## Installation
+### Installation
 
 This package is on NPM, so just run
  ```sh
 $ npm install ng-intercom --save
  ```
 
-## Configuration
+### Configuration
 
 1. Add the Intercom install script to src/index.html (Intercom provides this in their setup instructions). 
 
@@ -70,15 +70,16 @@ export class AppComponent implements OnInit {
 }
 ```
 
-## Development
+### Development
 To compile, just run `npm run build`. It will compile into the dist directory. 
 
 
-## Distribution
+### Distribution
 When publishing to NPM, make sure to `npm run build` first, and ignore src. Then type `cd dist` and `npm publish`.
+
+
+### Credits
+Made by Scott Wyatt and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017.
 
 [npm-image]: https://img.shields.io/npm/v/ng-intercom.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ng-intercom
-
-## Credits
-Made by Scott Wyatt and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017.
