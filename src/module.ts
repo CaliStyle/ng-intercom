@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IntercomBrowser } from './intercom.browser';
-import { Intercom, IntercomEnvironment } from './intercom';
+import { IntercomBrowser } from './providers/intercom.browser';
+import { Intercom, IntercomEnvironment } from './providers/intercom';
 
 
 @NgModule({
