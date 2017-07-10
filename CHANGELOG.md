@@ -1,7 +1,13 @@
-## [0.2.0](https://github.com/CaliStyle/angular2-intercom/releases/tag/0.2.2) - 04/21/2017
+### [1.0.0](https://github.com/CaliStyle/angular2-intercom/releases/tag/1.0.0) - 07/10/2017
+#### MAJOR
+- Deprecate `intercom.init()` method
+- Remove IntercomEnvironment class
+
+
+### [0.2.2](https://github.com/CaliStyle/angular2-intercom/releases/tag/0.2.2) - 04/21/2017
 - Fix ref in package.json
 
-## [0.2.0](https://github.com/CaliStyle/angular2-intercom/releases/tag/0.2.0) - 03/10/2017
+### [0.2.0](https://github.com/CaliStyle/angular2-intercom/releases/tag/0.2.0) - 03/10/2017
 - Move to Angular compiler so it acutally works
 - Clean up module format
 - Make compatible with AoT
