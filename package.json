@@ -12,7 +12,7 @@
     "Angular"
   ],
   "scripts": {
-    "start": "ngc -p ./tsconfig.json"
+    "build": "ngc -p ./tsconfig.json"
   },
   "author": "scott-wyatt",
   "contributors": [
@@ -28,15 +28,16 @@
     "@angular/common": "*"
   },
   "devDependencies": {
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.2.1",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.2.1",
-    "rxjs": "^5.0.1",
-    "typescript": "^2.4.1",
-    "zone.js": "^0.8.4"
+    "@angular/common": "^4.2.6",
+    "@angular/compiler": "^4.2.6",
+    "@angular/compiler-cli": "^4.2.6",
+    "@angular/core": "^4.2.6",
+    "rxjs": "^5.4.1",
+    "tsickle": "^0.23.3",
+    "typescript": "2.4.1",
+    "zone.js": "^0.8.12"
   },
-  "typings": "./dist/index.d.ts",
+  "typings": "./dist/index",
   "dependencies": {
     "codelyzer": "^3.1.2",
     "tslint": "^5.5.0"

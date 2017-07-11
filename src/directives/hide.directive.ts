@@ -5,12 +5,15 @@ import { Intercom } from '../providers/intercom';
     selector: '[intercomHide]'
 })
 export class IntercomHideDirective {
+    @Input() intercomHide: boolean;
     constructor(
         private intercom: Intercom
     ) { }
 
-    @HostListener('click', ['$event'])
-    onClick(event) {
-        this.intercom.hide();
+    @HostListener('click')
+    onClick() {
+        if (this.intercomHide != false) {
+            this.intercom.hide();
+        }
     }
 }

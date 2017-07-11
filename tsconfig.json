@@ -11,7 +11,6 @@
     "declaration": true,
     "outDir": "./dist",
     "stripInternal": true,
-    "allowJs": true,
     "lib": [
       "es2016",
       "dom"
@@ -21,8 +20,8 @@
     "node_modules"
   ],
   "files": [
-    "./index.d.ts",
-    "./src/module.ts"
+    "./index.ts",
+    "./src/intercom.module.ts"
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

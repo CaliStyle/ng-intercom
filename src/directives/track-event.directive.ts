@@ -13,8 +13,8 @@ export class IntercomTrackEventDirective {
         private intercom: Intercom
     ) { }
 
-    @HostListener('click', ['$event'])
-    onClick(event) {
+    @HostListener('click')
+    onClick() {
         let e = this.event ? this.event : this.intercomTrackEvent;
         if (e && this.metadata) {
             this.intercom.trackEvent(e, this.metadata);

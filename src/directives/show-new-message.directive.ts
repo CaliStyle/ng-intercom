@@ -12,8 +12,8 @@ export class IntercomShowNewMessageDirective {
         private intercom: Intercom
     ) { }
 
-    @HostListener('click', ['$event'])
-    onClick(event) {
+    @HostListener('click')
+    onClick() {
         let msg = this.message ? this.message : this.intercomShowNewMessage;
         if (msg) {
             this.intercom.showNewMessage(this.message);

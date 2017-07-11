@@ -5,12 +5,15 @@ import { Intercom } from '../providers/intercom';
     selector: '[intercomShutdown]'
 })
 export class IntercomShutdownDirective {
+    @Input() intercomShutdown: boolean;
     constructor(
         private intercom: Intercom
     ) { }
 
-    @HostListener('click', ['$event'])
-    onClick(event) {
-        this.intercom.shutdown();
+    @HostListener('click')
+    onClick() {
+        if (this.intercomShutdown != false) {
+            this.intercom.shutdown();
+        }
     }
 }

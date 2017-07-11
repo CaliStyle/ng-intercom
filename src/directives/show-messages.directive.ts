@@ -5,13 +5,15 @@ import { Intercom } from '../providers/intercom';
     selector: '[intercomShowMessages]'
 })
 export class IntercomShowMessagesDirective {
-
+    @Input() intercomShowMessages: boolean;
     constructor(
         private intercom: Intercom
     ) { }
 
-    @HostListener('click', ['$event'])
-    onClick(event) {
-        this.intercom.showMessages();
+    @HostListener('click')
+    onClick() {
+        if (this.intercomShowMessages != false) {
+            this.intercom.showMessages();
+        }
     }
 }
