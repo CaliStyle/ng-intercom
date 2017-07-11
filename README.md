@@ -1,6 +1,6 @@
 # Angular Intercom
 
-[![NPM version][https://img.shields.io/npm/v/ng-intercom.svg]][https://npmjs.org/package/ng-intercom]
+[![NPM version][https://img.shields.io/npm/v/ng-intercom.svg][https://npmjs.org/package/ng-intercom]
 
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
