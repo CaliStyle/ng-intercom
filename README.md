@@ -1,6 +1,6 @@
 # Angular Intercom
 
-[![npm version](https://badge.fury.io/js/ng-intercom.svg)](https://badge.fury.io/js/ng-intercom)Ï
+[![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom) [![npm](https://img.shields.io/npm/dm/ng-intercom.svg)](https://www.npmjs.com/ng-intercom) [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
 
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
