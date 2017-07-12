@@ -13,7 +13,7 @@ If you want to try the latest features, please see the `1.0.0-alpha` branch.
 
 This package is on NPM, so just run
  ```sh
-$ npm install ng-intercom --save
+$ npm install ng-intercom@beta --save
  ```
 
 ### Configuration
