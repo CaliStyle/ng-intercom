@@ -65,4 +65,4 @@ export class AppComponent implements OnInit {
 To compile, just run `npm run build`. It will compile into the dist directory. 
 
 ### Credits
-Made by Scott Wyatt and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017.Ï
+Made by Scott Wyatt and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017.
