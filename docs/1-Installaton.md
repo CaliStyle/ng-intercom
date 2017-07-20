@@ -5,7 +5,7 @@ Installing ng-intercom is easy. Make sure you have your App ID nearby for this p
 First, install ng-intercom from NPM.
 
 ```sh
-npm install --save ng-intercom
+npm install --save ng-intercom@beta
 ```
 
 Then, in your root `app.module.ts`, include `IntercomModule`.
