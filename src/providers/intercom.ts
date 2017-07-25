@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IntercomConfig } from '../types/intercom-config';
-import { loadIntercom } from '../util/load-intercom';
 
 /**
  * @description A provider with every Intercom.JS method
@@ -12,7 +11,6 @@ export class Intercom {
   constructor(
     private config: IntercomConfig
   ) {
-    loadIntercom(config.app_id);
   }
 
   /**

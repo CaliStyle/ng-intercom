@@ -8,7 +8,12 @@ import { IntercomShutdownDirective } from './directives/shutdown.directive';
 import { IntercomTrackEventDirective } from './directives/track-event.directive';
 import { Intercom } from './providers/intercom';
 import { IntercomConfig } from './types/intercom-config';
+import { loadIntercom } from './util/load-intercom';
 
+export function getIntercomService(config: IntercomConfig) {
+    loadIntercom(config.app_id);
+    return new Intercom(config);
+}
 
 @NgModule({
     imports: [CommonModule],
@@ -35,7 +40,11 @@ export class IntercomModule {
         return {
             ngModule: IntercomModule,
             providers: [
-                { provide: Intercom, useValue: config }
+                {
+                    provide: Intercom,
+                    useFactory: getIntercomService,
+                    deps: [config]
+                }
             ]
         }
     }
