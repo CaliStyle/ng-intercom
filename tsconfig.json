@@ -14,7 +14,13 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ], 
+    "baseUrl": "src",
+    "paths": {
+      "@angular/*": [
+        "../node_modules/@angular/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules"

@@ -11,7 +11,7 @@ function l() {
   x.parentNode.insertBefore(s, x);
 }
 
-export default function loadIntercom(appId: any) {
+export function loadIntercom(appId: any) {
   id = appId;
   var w = <any>window;
   var ic = w.Intercom;
