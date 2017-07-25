@@ -11,7 +11,6 @@ import { IntercomConfig } from './types/intercom-config';
 import { loadIntercom } from './util/load-intercom';
 
 export function getIntercomService(config: IntercomConfig) {
-    loadIntercom(config.app_id);
     return new Intercom(config);
 }
 

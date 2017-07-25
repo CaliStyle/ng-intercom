@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { IntercomConfig } from '../types/intercom-config';
+import { loadIntercom } from '../util/load-intercom';
 
 /**
  * @description A provider with every Intercom.JS method
@@ -9,8 +10,11 @@ import { IntercomConfig } from '../types/intercom-config';
 @Injectable()
 export class Intercom {
   constructor(
-    private config: IntercomConfig
+    @Optional() private config: IntercomConfig
   ) {
+    console.log(config);
+
+    loadIntercom(config.app_id);
   }
 
   /**
