@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { IntercomHideDirective } from './directives/hide.directive';
 import { IntercomShowMessagesDirective } from './directives/show-messages.directive';
 import { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
@@ -10,9 +10,7 @@ import { Intercom } from './providers/intercom';
 import { IntercomConfig } from './types/intercom-config';
 import { loadIntercom } from './util/load-intercom';
 
-export function getIntercomService(config: IntercomConfig) {
-    return new Intercom(config);
-}
+export const CONFIG = new InjectionToken('CONFIG');
 
 @NgModule({
     imports: [CommonModule],
@@ -39,11 +37,8 @@ export class IntercomModule {
         return {
             ngModule: IntercomModule,
             providers: [
-                {
-                    provide: Intercom,
-                    useFactory: getIntercomService,
-                    deps: [config]
-                }
+                Intercom,
+                { provide: CONFIG, useValue: config }
             ]
         }
     }

@@ -1,4 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { CONFIG } from '../intercom.module';
 import { IntercomConfig } from '../types/intercom-config';
 import { loadIntercom } from '../util/load-intercom';
 
@@ -10,7 +11,7 @@ import { loadIntercom } from '../util/load-intercom';
 @Injectable()
 export class Intercom {
   constructor(
-    @Optional() private config: IntercomConfig
+    @Inject(CONFIG) private config: IntercomConfig
   ) {
     console.log(config);
 
