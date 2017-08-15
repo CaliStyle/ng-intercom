@@ -27,7 +27,9 @@ import { AppComponent } from './app';
 
 @NgModule({
   imports: [
-    IntercomModule.forRoot(YOUR_APP_ID)
+    IntercomModule.forRoot({
+      app_id: <app_id>
+    })
   ]
 })
 export class AppModule{}
