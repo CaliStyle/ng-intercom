@@ -12,7 +12,7 @@
     "Angular"
   ],
   "scripts": {
-    "preinstall": "ngc -p ./tsconfig.json"
+    "build": "ngc -p ./tsconfig.json"
   },
   "author": "scott-wyatt",
   "contributors": [
