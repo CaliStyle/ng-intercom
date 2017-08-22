@@ -1,6 +1,6 @@
 {
   "name": "ng-intercom",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-beta.0",
   "description": "An Intercom wrapper for Angular",
   "main": "./dist/index",
   "repository": {
