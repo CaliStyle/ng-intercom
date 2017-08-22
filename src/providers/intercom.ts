@@ -1,7 +1,9 @@
-import { Injectable, Inject } from '@angular/core';
-import { CONFIG } from '../intercom.module';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { IntercomConfig } from '../types/intercom-config';
 import { loadIntercom } from '../util/load-intercom';
+
+
+export const CONFIG = new InjectionToken('CONFIG');
 
 /**
  * @description A provider with every Intercom.JS method
