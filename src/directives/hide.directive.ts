@@ -1,4 +1,5 @@
 import { Directive, HostListener, Input } from '@angular/core';
+
 import { Intercom } from '../providers/intercom';
 
 @Directive({
@@ -6,6 +7,7 @@ import { Intercom } from '../providers/intercom';
 })
 export class IntercomHideDirective {
     @Input() intercomHide: boolean;
+    
     constructor(
         private intercom: Intercom
     ) { }
