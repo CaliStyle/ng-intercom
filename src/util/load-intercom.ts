@@ -27,10 +27,8 @@ export function loadIntercom(appId: any) {
       i.q.push(args);
     };
     w.Intercom = i;
-    if (w.attachEvent) {
-      w.attachEvent('onload', l);
-    } else {
-      w.addEventListener('load', l, false);
-    }
+
+    // Attach script.
+    l();
   }
-};
+}

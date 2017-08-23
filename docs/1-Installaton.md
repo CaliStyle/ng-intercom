@@ -23,7 +23,8 @@ import { IntercomModule } from 'ng-intercom';
 export class AppModule{}
 ```
 
-If you have child modules or lazy loaded modules and you want to use the directives, import `IntercomModule`, but don't call `forRoot()` on it.
+If you have child modules or lazy loaded modules and you want to use the directives, import `IntercomModule`,
+but don't call `forRoot()` on it.
 
 ```ts
 import { IntercomModule } from 'ng-intercom';

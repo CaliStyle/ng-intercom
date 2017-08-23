@@ -12,3 +12,4 @@ dist
 *.map
 *.d.ts
 !index.d.ts
+package-lock.json

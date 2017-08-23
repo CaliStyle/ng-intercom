@@ -1,6 +1,8 @@
-# Angular Intercom
+This is fork of the angular2-intercom to support multiple "PROJECTS"
 
-[![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom) [![npm](https://img.shields.io/npm/dm/ng-intercom.svg)](https://www.npmjs.com/ng-intercom) [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
+# Angular Intercom for website where multiple intercom apps might be used.
+
+[![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom-multi) [![npm](https://img.shields.io/npm/dm/ng-intercom-multi.svg)](https://www.npmjs.com/ng-intercom-multi) [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
 
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
@@ -8,7 +10,7 @@ It supports all documented intercom methods.
 
 ### BETA VERSION
 
-`master` is now hosting the 1.0.0 beta version of `ng-intercom`. If you need to make changes to the latest stable version, please PR against `0.x.x`. If you need to use the last 0.x version, please run `npm install --save --save-exact ng-intercom@0.2`.
+`master` is now hosting the 1.0.2 beta version of `ng-intercom-multi`. If you need to make changes to the latest stable version, please PR against `0.x.x`.
 
 If you find issues with this version, please file an issue as soon as possible so we can take a look at it. We appreciate your cooperation!
 
@@ -16,12 +18,14 @@ If you find issues with this version, please file an issue as soon as possible s
 
 This package is on NPM, so just run
  ```sh
-$ npm install ng-intercom@beta --save
+$ npm install ng-intercom-multi --save
  ```
 
 ### Configuration
 
-1. Import `IntercomModule` to `app.module.ts`. The module will automatically include the APP_ID instantiation, so you DO NOT need to copy the install script from Intercom and place it in your `index.html`.
+1. Import `IntercomModule` to `app.module.ts`.
+We don't load any "intercom" javascript at this point. We loaded within your app once you know the
+"app id".
 
 ```ts
 import { IntercomModule } from 'ng-intercom';
@@ -29,9 +33,7 @@ import { IntercomModule } from 'ng-intercom';
 @NgModule({
   imports: [
     ...
-    IntercomModule.forRoot({
-      app_id: <app_id>
-    })
+    IntercomModule.forRoot()
     ...
   ]
 })
@@ -54,8 +56,10 @@ export class AppComponent implements OnInit {
     public intercom: Intercom
   ){}
 
-  ngOnInit() {
-    this.intercom.init({
+  initIntercom() {
+    this.intercom.boot({
+      app_id: <app_id>,
+    }, {
       app_id: <app_id>,
       // Supports all optional configuration.
       widget: {

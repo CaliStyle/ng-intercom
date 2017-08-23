@@ -1,9 +1,6 @@
-import { Injectable, Inject, InjectionToken } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IntercomConfig } from '../types/intercom-config';
 import { loadIntercom } from '../util/load-intercom';
-
-
-export const CONFIG = new InjectionToken('CONFIG');
 
 /**
  * @description A provider with every Intercom.JS method
@@ -12,33 +9,17 @@ export const CONFIG = new InjectionToken('CONFIG');
  */
 @Injectable()
 export class Intercom {
-  constructor(
-    @Inject(CONFIG) private config: IntercomConfig
-  ) {
-    console.log(config);
-
-    loadIntercom(config.app_id);
-  }
-
-  /**
-   * @description Method used to instantiate Intercom
-   * @param {object} [intercomData] 
-   * @memberof Intercom
-   * 
-   * @deprecated
-   */
-  init(intercomData?: object) {
-    console.warn('Intercom.init is deprecated and will be removed in a future release. Please use Intercom.boot.');
-    return (<any>window).Intercom("boot", intercomData);
-  }
-
   /**
    * @description 
-   * If you'd like to control when Intercom is loaded, you can use the 'boot' method. This is useful in situations like a one-page Javascript based application where the user may not be logged in when the page loads. You call this method with the standard intercomSettings object.
+   * If you'd like to control when Intercom is loaded, you can use the 'boot' method.
+   * This is useful in situations like a one-page Javascript based application where the user may not be logged
+   * in when the page loads. You call this method with the standard intercomSettings object.
+   *
    * @param {object} [intercomData] Your intercom configuration
    * @memberof Intercom
    */
-  boot(intercomData?: object) {
+  boot(config: IntercomConfig, intercomData?: object) {
+    loadIntercom(config.app_id);
     return (<any>window).Intercom("boot", intercomData);
   }
 
