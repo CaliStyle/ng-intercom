@@ -1,3 +1,4 @@
 export interface IntercomConfig {
-    app_id: string;
+    appId: string;
+    updateOnRouterChange?: boolean;
 }

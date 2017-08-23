@@ -30,7 +30,7 @@ import { IntercomModule } from 'ng-intercom';
   imports: [
     ...
     IntercomModule.forRoot({
-      app_id: <app_id>
+      appId: <your_app_id>
     })
     ...
   ]

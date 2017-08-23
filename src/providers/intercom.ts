@@ -1,7 +1,8 @@
-import { Injectable, Inject, InjectionToken } from '@angular/core';
-import { IntercomConfig } from '../types/intercom-config';
-import { loadIntercom } from '../util/load-intercom';
+import { Inject, Injectable, InjectionToken, isDevMode } from '@angular/core';
 
+import { IntercomConfig } from '../types/intercom-config';
+import { Router } from '@angular/router';
+import { loadIntercom } from '../util/load-intercom';
 
 export const CONFIG = new InjectionToken('CONFIG');
 
@@ -13,11 +14,17 @@ export const CONFIG = new InjectionToken('CONFIG');
 @Injectable()
 export class Intercom {
   constructor(
+    private router: Router,
     @Inject(CONFIG) private config: IntercomConfig
   ) {
-    console.log(config);
-
-    loadIntercom(config.app_id);
+    loadIntercom(config.appId);
+    if (config.updateOnRouterChange) {
+      this.router.events.subscribe(event => {
+        this.update();
+      });
+    } else if (isDevMode()) {
+      console.warn('Common practice in single page applications is to update whenever the route changes. ng-intercom supports this functionality out of the box; just set `updateOnRouterChange` to true in your Intercom Module config. This warning will not appear in production, if you choose not to use router updating.')
+    }
   }
 
   /**
@@ -28,7 +35,9 @@ export class Intercom {
    * @deprecated
    */
   init(intercomData?: object) {
-    console.warn('Intercom.init is deprecated and will be removed in a future release. Please use Intercom.boot.');
+    if (isDevMode()) {
+      console.warn('Intercom.init is deprecated and will be removed in a future release. Please use Intercom.boot.');
+    }
     return (<any>window).Intercom("boot", intercomData);
   }
 

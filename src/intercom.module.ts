@@ -9,10 +9,11 @@ import { IntercomShowMessagesDirective } from './directives/show-messages.direct
 import { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
 import { IntercomShutdownDirective } from './directives/shutdown.directive';
 import { IntercomTrackEventDirective } from './directives/track-event.directive';
+import { RouterModule } from '@angular/router';
 import { loadIntercom } from './util/load-intercom';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [RouterModule],
     providers: [Intercom],
     declarations: [
         IntercomHideDirective,
