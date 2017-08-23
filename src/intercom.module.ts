@@ -13,7 +13,6 @@ import { loadIntercom } from './util/load-intercom';
 
 @NgModule({
     imports: [CommonModule],
-    providers: [Intercom],
     declarations: [
         IntercomHideDirective,
         IntercomShowMessagesDirective,
@@ -36,8 +35,8 @@ export class IntercomModule {
         return {
             ngModule: IntercomModule,
             providers: [
+                { provide: CONFIG, useValue: config },
                 Intercom,
-                { provide: CONFIG, useValue: config }
             ]
         }
     }
