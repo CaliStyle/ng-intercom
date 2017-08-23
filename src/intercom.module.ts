@@ -21,6 +21,7 @@ import { IntercomTrackEventDirective } from './directives/track-event.directive'
         IntercomTrackEventDirective
     ],
     exports: [
+        Intercom,
         IntercomHideDirective,
         IntercomShowMessagesDirective,
         IntercomShowNewMessageDirective,

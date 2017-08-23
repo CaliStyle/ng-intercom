@@ -1,6 +1,6 @@
 {
   "name": "ng-intercom-multi",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An Intercom wrapper for Angular, supports multiple intercom apps (per load)",
   "main": "./dist/index",
   "repository": {
