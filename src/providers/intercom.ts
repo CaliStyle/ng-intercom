@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken, isDevMode } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Optional, isDevMode } from '@angular/core';
 
 import { IntercomConfig } from '../types/intercom-config';
 import { Router } from '@angular/router';
@@ -14,8 +14,8 @@ export const CONFIG = new InjectionToken('CONFIG');
 @Injectable()
 export class Intercom {
   constructor(
-    private router: Router,
-    @Inject(CONFIG) private config: IntercomConfig
+    @Inject(CONFIG) private config: IntercomConfig,
+    @Optional() @Inject(Router) private router: Router,
   ) {
     loadIntercom(config.appId);
     if (config.updateOnRouterChange) {

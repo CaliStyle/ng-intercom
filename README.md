@@ -30,7 +30,8 @@ import { IntercomModule } from 'ng-intercom';
   imports: [
     ...
     IntercomModule.forRoot({
-      appId: <your_app_id>
+      appId: <your_app_id>, // from your Intercom config
+      updateOnRouterChange: true // will automatically run `update` on router event changes. Default: `false`
     })
     ...
   ]
