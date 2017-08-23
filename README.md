@@ -4,10 +4,13 @@
 
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
-It supports all intercom methods.
+It supports all documented intercom methods.
 
-### ALPHA VERSION
-If you want to try the latest features, please see the `1.0.0-alpha` branch.
+### BETA VERSION
+
+`master` is now hosting the 1.0.0 beta version of `ng-intercom`. If you need to make changes to the latest stable version, please PR against `0.x.x`. If you need to use the last 0.x version, please run `npm install --save --save-exact ng-intercom@0.2`.
+
+If you find issues with this version, please file an issue as soon as possible so we can take a look at it. We appreciate your cooperation!
 
 ### Installation
 
@@ -23,23 +26,23 @@ $ npm install ng-intercom@beta --save
 ```ts
 import { IntercomModule } from 'ng-intercom';
 
-import { AppComponent } from './app';
-
 @NgModule({
   imports: [
+    ...
     IntercomModule.forRoot({
       app_id: <app_id>
     })
+    ...
   ]
 })
-export class AppModule{}
+export class AppModule { }
 ```
 
 2. Use in your components/directives/whatever you want!
 
 ```ts
 // App
-...
+import { Component, OnInit } from '@angular/core';
 import { Intercom } from 'ng-intercom';
 
 @Component({
