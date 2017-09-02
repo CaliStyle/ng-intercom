@@ -1,4 +1,4 @@
-declare var intercomSettings: any;
+
 let id: string;
 let d = document;
 
@@ -17,7 +17,7 @@ export function loadIntercom(appId: any) {
   var ic = w.Intercom;
   if (typeof ic === 'function') {
     ic('reattach_activator');
-    ic('update', intercomSettings);
+    ic('update');
   } else {
     let i: any = function () {
       i.c(arguments);
