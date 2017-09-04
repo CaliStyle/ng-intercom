@@ -24,18 +24,20 @@
   },
   "homepage": "https://github.com/CaliStyle/angular2-intercom#readme",
   "peerDependencies": {
-    "@angular/core": "*",
-    "@angular/router": "*"
+    "@angular/common": ">=4.3.0",
+    "@angular/core": ">=4.3.0",
+    "@angular/router": ">=4.3.0"
   },
   "devDependencies": {
-    "@angular/common": "4.2.6",
-    "@angular/compiler": "4.2.6",
-    "@angular/compiler-cli": "4.2.6",
-    "@angular/core": "4.2.6",
-    "@angular/router": "^4.3.5",
+    "@angular/common": "^4.3.6",
+    "@angular/compiler": "^4.3.6",
+    "@angular/compiler-cli": "^4.3.6",
+    "@angular/core": "^4.3.6",
+    "@angular/platform-browser": "^4.3.6",
+    "@angular/router": "^4.3.6",
     "codelyzer": "3.1.2",
-    "rxjs": "5.4.2",
-    "tsickle": "0.23.3",
+    "rxjs": "^5.4.2",
+    "tsickle": "0.23.6",
     "tslint": "5.5.0",
     "typescript": "2.3.4",
     "zone.js": "0.8.12"

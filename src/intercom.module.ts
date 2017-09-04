@@ -1,7 +1,8 @@
-import { CONFIG, Intercom } from './providers/intercom';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { CONFIG } from './config-token';
 import { CommonModule } from '@angular/common';
+import { Intercom } from './intercom/intercom';
 import { IntercomConfig } from './types/intercom-config';
 import { IntercomHideDirective } from './directives/hide.directive';
 import { IntercomShowDirective } from './directives/show.directive';
