@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { CONFIG } from './config-token';
+import { CONFIG } from './shared/config-token';
 import { CommonModule } from '@angular/common';
 import { Intercom } from './intercom/intercom';
 import { IntercomConfig } from './types/intercom-config';
@@ -10,6 +10,7 @@ import { IntercomShowMessagesDirective } from './directives/show-messages.direct
 import { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
 import { IntercomShutdownDirective } from './directives/shutdown.directive';
 import { IntercomTrackEventDirective } from './directives/track-event.directive';
+import { Leads } from './leads/leads';
 import { RouterModule } from '@angular/router';
 import { loadIntercom } from './util/load-intercom';
 
@@ -39,6 +40,7 @@ export class IntercomModule {
             providers: [
                 { provide: CONFIG, useValue: config },
                 Intercom,
+                Leads
             ]
         }
     }

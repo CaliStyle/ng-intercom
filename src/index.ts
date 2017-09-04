@@ -1,9 +1,13 @@
+export { Intercom } from './intercom/intercom';
+export { IntercomConfig } from './types/intercom-config';
 export { IntercomHideDirective } from './directives/hide.directive';
+export { IntercomModule } from './intercom.module';
+export { IntercomShowDirective } from './directives/show.directive';
 export { IntercomShowMessagesDirective } from './directives/show-messages.directive';
 export { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
-export { IntercomShowDirective } from './directives/show.directive';
 export { IntercomShutdownDirective } from './directives/shutdown.directive';
 export { IntercomTrackEventDirective } from './directives/track-event.directive';
-export { IntercomModule } from './intercom.module';
-export { Intercom } from './providers/intercom';
-export { IntercomConfig } from './types/intercom-config';
+export { Leads } from './leads/leads';
+
+import { LeadInput } from './leads/lead-input';
+import { LeadsListResponse } from './leads/leads-list-reponse';

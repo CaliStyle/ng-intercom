@@ -1,6 +1,6 @@
 import { Directive, HostListener, Input } from '@angular/core';
 
-import { Intercom } from '../providers/intercom';
+import { Intercom } from '../intercom/intercom';
 
 @Directive({
     selector: '[intercomHide]'

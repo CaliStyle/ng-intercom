@@ -58,7 +58,7 @@ export class Leads {
             .map((res: HttpResponse<object>) => res.body);
     }
 
-    convert(leadId: string, user): Observable<object> {
+    convert(leadId: string, user: object): Observable<object> {
         return this.http.post(`https://api.intercom.io/contacts/convert`,
             { contact: { user_id: leadId }, user },
             this.options.getOptions())
