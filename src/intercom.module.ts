@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { CONFIG } from './shared/config-token';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Intercom } from './intercom/intercom';
 import { IntercomConfig } from './types/intercom-config';
 import { IntercomHideDirective } from './directives/hide.directive';
@@ -15,7 +16,10 @@ import { RouterModule } from '@angular/router';
 import { loadIntercom } from './util/load-intercom';
 
 @NgModule({
-    imports: [RouterModule],
+    imports: [
+        HttpClientModule,
+        RouterModule
+    ],
     declarations: [
         IntercomHideDirective,
         IntercomShowMessagesDirective,
