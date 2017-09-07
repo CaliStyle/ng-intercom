@@ -7,7 +7,3 @@ export { IntercomShowMessagesDirective } from './directives/show-messages.direct
 export { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
 export { IntercomShutdownDirective } from './directives/shutdown.directive';
 export { IntercomTrackEventDirective } from './directives/track-event.directive';
-export { Leads } from './leads/leads';
-
-import { LeadInput } from './leads/lead-input';
-import { LeadsListResponse } from './leads/leads-list-reponse';

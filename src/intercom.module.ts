@@ -11,7 +11,7 @@ import { IntercomShowMessagesDirective } from './directives/show-messages.direct
 import { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
 import { IntercomShutdownDirective } from './directives/shutdown.directive';
 import { IntercomTrackEventDirective } from './directives/track-event.directive';
-import { Leads } from './leads/leads';
+import { Options } from './shared/options';
 import { RouterModule } from '@angular/router';
 import { loadIntercom } from './util/load-intercom';
 
@@ -44,7 +44,7 @@ export class IntercomModule {
             providers: [
                 { provide: CONFIG, useValue: config },
                 Intercom,
-                Leads
+                Options
             ]
         }
     }
