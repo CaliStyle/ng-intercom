@@ -1,5 +1,5 @@
 export { Intercom } from './intercom/intercom';
-export { IntercomConfig } from './types/intercom-config';
+export { IntercomConfig } from './shared/intercom-config';
 export { IntercomHideDirective } from './directives/hide.directive';
 export { IntercomModule } from './intercom.module';
 export { IntercomShowDirective } from './directives/show.directive';

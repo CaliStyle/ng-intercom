@@ -1,23 +1,18 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-
-import { CONFIG } from './shared/config-token';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Intercom } from './intercom/intercom';
-import { IntercomConfig } from './types/intercom-config';
+import { RouterModule } from '@angular/router';
 import { IntercomHideDirective } from './directives/hide.directive';
-import { IntercomShowDirective } from './directives/show.directive';
 import { IntercomShowMessagesDirective } from './directives/show-messages.directive';
 import { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
+import { IntercomShowDirective } from './directives/show.directive';
 import { IntercomShutdownDirective } from './directives/shutdown.directive';
 import { IntercomTrackEventDirective } from './directives/track-event.directive';
-import { Options } from './shared/options';
-import { RouterModule } from '@angular/router';
+import { Intercom } from './intercom/intercom';
+import { IntercomConfig } from './shared/intercom-config';
 import { loadIntercom } from './util/load-intercom';
+
 
 @NgModule({
     imports: [
-        HttpClientModule,
         RouterModule
     ],
     declarations: [
@@ -42,9 +37,8 @@ export class IntercomModule {
         return {
             ngModule: IntercomModule,
             providers: [
-                { provide: CONFIG, useValue: config },
-                Intercom,
-                Options
+                { provide: IntercomConfig, useValue: config },
+                Intercom
             ]
         }
     }

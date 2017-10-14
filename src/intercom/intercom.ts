@@ -1,7 +1,6 @@
 import { Inject, Injectable, InjectionToken, isDevMode, Optional } from '@angular/core';
 import { Router } from '@angular/router';
-import { CONFIG } from '../shared/config-token';
-import { IntercomConfig } from '../types/intercom-config';
+import { IntercomConfig } from '../shared/intercom-config';
 import { loadIntercom } from '../util/load-intercom';
 
 
@@ -13,7 +12,7 @@ import { loadIntercom } from '../util/load-intercom';
 @Injectable()
 export class Intercom {
   constructor(
-    @Inject(CONFIG) private config: IntercomConfig,
+    @Inject(IntercomConfig) private config: IntercomConfig,
     @Optional() @Inject(Router) private router: Router,
   ) {
     loadIntercom(config.appId);
