@@ -1,9 +1,9 @@
-import { Inject, Injectable, InjectionToken, Optional, isDevMode } from '@angular/core';
-
+import { Inject, Injectable, InjectionToken, isDevMode, Optional } from '@angular/core';
+import { Router } from '@angular/router';
 import { CONFIG } from '../shared/config-token';
 import { IntercomConfig } from '../types/intercom-config';
-import { Router } from '@angular/router';
 import { loadIntercom } from '../util/load-intercom';
+
 
 /**
  * @description A provider with every Intercom.JS method
@@ -37,7 +37,7 @@ export class Intercom {
     if (isDevMode()) {
       console.warn('Intercom.init is deprecated and will be removed in a future release. Please use Intercom.boot.');
     }
-    return (<any>window).Intercom("boot", intercomData);
+    return (<any>window).Intercom("boot", { app_id: this.config.appId, ...intercomData });
   }
 
   /**
@@ -47,7 +47,7 @@ export class Intercom {
    * @memberof Intercom
    */
   boot(intercomData?: object) {
-    return (<any>window).Intercom("boot", intercomData);
+    return (<any>window).Intercom("boot", { app_id: this.config.appId, ...intercomData });
   }
 
   /**

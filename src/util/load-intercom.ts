@@ -12,25 +12,25 @@ function l() {
 }
 
 export function loadIntercom(appId: any) {
-  id = appId;
-  var w = <any>window;
-  var ic = w.Intercom;
-  if (typeof ic === 'function') {
-    ic('reattach_activator');
-    ic('update');
-  } else {
-    let i: any = function () {
-      i.c(arguments);
-    };
-    i.q = [];
-    i.c = function (args: any) {
-      i.q.push(args);
-    };
-    w.Intercom = i;
-    if (w.attachEvent) {
-      w.attachEvent('onload', l);
-    } else {
-      w.addEventListener('load', l, false);
-    }
-  }
+  (<any>window).Intercom = intercomBootstrap();
+  createScript(appId);
+};
+function createScript(appId: string) {
+  var scriptTag = document.createElement('script');
+  scriptTag.type = 'text/javascript';
+  scriptTag.async = true;
+  scriptTag.src = 'https://widget.intercom.io/widget/' + appId;
+  var s = document.getElementsByTagName('head')[0];
+  s.appendChild(scriptTag);
+};
+
+function intercomBootstrap() {
+  let Intercom: any = function () {
+    Intercom.c(arguments)
+  };
+  Intercom.q = [];
+  Intercom.c = function (args: any) {
+    Intercom.q.push(args)
+  };
+  return Intercom;
 };
