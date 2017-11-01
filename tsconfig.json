@@ -14,7 +14,7 @@
     "lib": [
       "es2016",
       "dom"
-    ], 
+    ],
     "baseUrl": "src",
     "paths": {
       "@angular/*": [
@@ -30,6 +30,7 @@
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "preserveWhitespaces": false
   }
 }
