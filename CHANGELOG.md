@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.0.0-beta.7] - 2017-10-14
+
+## [1.0.0-beta.9] - 2017-11-01
+### Fixed
+- Make NPM dependencies compatible with Angular v5
+
+
+## [1.0.0-beta.8] - 2017-10-14
 ### Fixed
 - Clean up dependencies and structure
 - Add compatibility with Angular v5
