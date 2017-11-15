@@ -16,7 +16,7 @@ If you find issues with this version, please file an issue as soon as possible s
 
 This package is on NPM, so just run
  ```sh
-$ npm install ng-intercom@beta --save
+$ npm install ng-intercom@latest --save
  ```
 
 ### Configuration
