@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/CaliStyle/angular2-intercom#readme",
   "peerDependencies": {
-    "@angular/core": ">=2.0.0 <6.0.0",
-    "@angular/router": ">=2.0.0 <6.0.0"
+    "@angular/core": ">=5.0.0 <6.0.0",
+    "@angular/router": ">=5.0.0 <6.0.0"
   },
   "devDependencies": {
     "@angular/common": "^5.0.0",
@@ -39,7 +39,7 @@
     "tsickle": "0.24.1",
     "tslint": "^5.8.0",
     "typescript": "^2.4.2",
-    "zone.js": "0.8.12"
+    "zone.js": "0.8.18"
   },
   "typings": "./dist/index",
   "dependencies": {}
