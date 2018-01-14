@@ -1,6 +1,6 @@
 {
   "name": "ng-intercom",
-  "version": "0.2.1",
+  "version": "1.0.0-beta.10",
   "description": "An Intercom wrapper for Angular",
   "main": "./dist/index",
   "repository": {
@@ -12,7 +12,7 @@
     "Angular"
   ],
   "scripts": {
-    "install": "ngc -p ./tsconfig.json"
+    "build": "ngc -p ./tsconfig.json"
   },
   "author": "scott-wyatt",
   "contributors": [
@@ -24,17 +24,23 @@
   },
   "homepage": "https://github.com/CaliStyle/angular2-intercom#readme",
   "peerDependencies": {
-    "@angular/core": "*",
-    "@angular/common": "*"
+    "@angular/core": ">=5.0.0 <6.0.0",
+    "@angular/router": ">=5.0.0 <6.0.0"
   },
   "devDependencies": {
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "rxjs": "^5.2.0",
-    "typescript": "^2.2.0",
-    "zone.js": "^0.8.4"
+    "@angular/common": "^5.0.0",
+    "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@angular/router": "^5.0.0",
+    "codelyzer": "^4.0.0",
+    "rxjs": "^5.5.2",
+    "tsickle": "0.24.1",
+    "tslint": "^5.8.0",
+    "typescript": "^2.4.2",
+    "zone.js": "0.8.18"
   },
-  "typings": "./dist/index.d.ts"
+  "typings": "./dist/index",
+  "dependencies": {}
 }

@@ -1,10 +1,16 @@
 # Angular Intercom
 
-[![NPM version][npm-image]][npm-url]
+[![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom) [![npm](https://img.shields.io/npm/dm/ng-intercom.svg)](https://www.npmjs.com/ng-intercom) [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
 
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
-It supports all intercom methods.
+It supports all documented intercom methods.
+
+### BETA VERSION
+
+`master` is now hosting the 1.0.0 beta version of `ng-intercom`. If you need to make changes to the latest stable version, please PR against `0.x.x`. If you need to use the last 0.x version, please run `npm install --save --save-exact ng-intercom@0.2`.
+
+If you find issues with this version, please file an issue as soon as possible so we can take a look at it. We appreciate your cooperation!
 
 ### ALPHA VERSION
 If you want to try the latest features, check out the 1.0.0-alpha branch! Features include automatic script loading and intercom directives! If you find an issue, please report it!
@@ -13,43 +19,34 @@ If you want to try the latest features, check out the 1.0.0-alpha branch! Featur
 
 This package is on NPM, so just run
  ```sh
-$ npm install ng-intercom --save
+$ npm install ng-intercom@latest --save
  ```
 
 ### Configuration
 
-1. Add the Intercom install script to src/index.html (Intercom provides this in their setup instructions). 
-
-```html
-<script>
-(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;
-    s.src='https://widget.intercom.io/widget/<app_id>';
-    var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
-</script>
-```
-
-2. Import `IntercomModule` to `app.module.ts`.
+1. Import `IntercomModule` to `app.module.ts`. The module will automatically include the APP_ID instantiation, so you DO NOT need to copy the install script from Intercom and place it in your `index.html`.
 
 ```ts
-
 import { IntercomModule } from 'ng-intercom';
-
-import { AppComponent } from './app';
 
 @NgModule({
   imports: [
-    IntercomModule.forRoot()
+    ...
+    IntercomModule.forRoot({
+      appId: <your_app_id>, // from your Intercom config
+      updateOnRouterChange: true // will automatically run `update` on router event changes. Default: `false`
+    })
+    ...
   ]
 })
-export class AppModule{}
-
+export class AppModule { }
 ```
 
-3. Use in your components/directives/whatever you want!
+2. Use in your components/directives/whatever you want!
 
 ```ts
 // App
-...
+import { Component, OnInit } from '@angular/core';
 import { Intercom } from 'ng-intercom';
 
 @Component({
@@ -76,13 +73,5 @@ export class AppComponent implements OnInit {
 ### Development
 To compile, just run `npm run build`. It will compile into the dist directory. 
 
-
-### Distribution
-When publishing to NPM, make sure to `npm run build` first, and ignore src. Then type `cd dist` and `npm publish`.
-
-
 ### Credits
-Made by Scott Wyatt and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017.
-
-[npm-image]: https://img.shields.io/npm/v/ng-intercom.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/ng-intercom
+Maintained by [Scott Wyatt](https://github.com/scott-wyatt) and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017 with contributions from [Florian Reifschneider](https://github.com/flore2003), [Devon Sams](https://www.twitter.com/POS1TRON), and [Humberto Rocha](https://github.com/humrochagf)
