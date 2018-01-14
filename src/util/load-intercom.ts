@@ -1,4 +1,5 @@
-declare var intercomSettings: any;
+import { IntercomConfig } from '../types/intercom-config';
+
 let id: string;
 let d = document;
 
@@ -11,13 +12,13 @@ function l() {
   x.parentNode.insertBefore(s, x);
 }
 
-export function loadIntercom(appId: any) {
-  id = appId;
+export function loadIntercom(config: IntercomConfig) {
+  id = config.app_id;
   var w = <any>window;
   var ic = w.Intercom;
   if (typeof ic === 'function') {
     ic('reattach_activator');
-    ic('update', intercomSettings);
+    ic('update', config);
   } else {
     let i: any = function () {
       i.c(arguments);
