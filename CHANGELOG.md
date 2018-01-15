@@ -1,12 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [1.0.0-beta.11] - 2018-1-4
+### Added
+- Configuration options (that would otherwise be in `window.intercomSettings`)
+- Add a somewhat typed input for `Intercom.boot` and `Intercom.update`
+
+### Removed
+- **BREAKING CHANGE**: Removed deprecated `Intercom.init()` method
+
 
 ## [1.0.0-beta.10] - 2017-11-15
 ### Fixed
 - **BREAKING CHANGE**: `ng-intercom` now requires peers of Angular v5. Please update your applications, or you may get an error when compiling.
+
+
 ## [1.0.0-beta.9] - 2017-11-01
 ### Fixed
 - Make NPM dependencies compatible with Angular v5
