@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   ){}
 
   ngOnInit() {
-    this.intercom.init({
+    this.intercom.boot({
       app_id: <app_id>,
       // Supports all optional configuration.
       widget: {
