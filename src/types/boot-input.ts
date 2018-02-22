@@ -1,9 +1,9 @@
 export interface UserWithEmail {
-    email: string;
+    email?: string;
 }
 
 export interface UserWithUid {
-    user_id: string;
+    user_id?: string;
 }
 
 export interface Any {
