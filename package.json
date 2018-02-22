@@ -1,11 +1,11 @@
 {
-  "name": "ng-intercom",
-  "version": "1.0.0-beta.11",
+  "name": "angularx-intercom",
+  "version": "0.0.1",
   "description": "An Intercom wrapper for Angular",
   "main": "./dist/index",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CaliStyle/angular2-intercom.git"
+    "url": "git+https://github.com/RuiEEE/angular2-intercom.git"
   },
   "keywords": [
     "Intercom",
@@ -14,9 +14,10 @@
   "scripts": {
     "build": "ngc -p ./tsconfig.json"
   },
-  "author": "scott-wyatt",
+  "author": "scott",
   "contributors": [
-    "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)"
+    "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)",
+    "Rui Santos <ruiapdsantos@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {

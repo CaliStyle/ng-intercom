@@ -1,5 +1,6 @@
-import { Inject, Injectable, InjectionToken, Optional, isDevMode } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, InjectionToken, Optional, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 import { IntercomConfig } from '../shared/intercom-config';
 import { Any, BootInput } from '../types/boot-input';
@@ -15,8 +16,12 @@ export class Intercom {
   constructor(
     @Inject(IntercomConfig) private config: IntercomConfig,
     @Optional() @Inject(Router) private router: Router,
+    @Inject(PLATFORM_ID) protected platformId: Object,
   ) {
-    loadIntercom(config);
+    if(isPlatformBrowser()) {
+      loadIntercom(config);
+    }
+    
     if (config.updateOnRouterChange) {
       this.router.events.subscribe(event => {
         this.update();
