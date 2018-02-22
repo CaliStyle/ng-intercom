@@ -1,6 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID, InjectionToken, Optional, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { IntercomConfig } from '../shared/intercom-config';
 import { Any, BootInput } from '../types/boot-input';
@@ -36,6 +36,10 @@ export class Intercom {
    * @param {object} [intercomData] Your intercom configuration
    */
   boot(intercomData?: BootInput) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+    
     let data = {
       ...intercomData,
       app_id: this.config.appId
@@ -48,6 +52,10 @@ export class Intercom {
    * If you have the Respond product (combined with another product like Engage) you should call the Intercom shutdown method to clear your users’ conversations anytime they logout of your application. Otherwise, the cookie we use to track who was most recently logged in on a given device or computer will keep these conversations in the Messenger for one week. This method will effectively clear out any user data that you have been passing through the JS API.
    */
   shutdown() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom("shutdown");
   }
 
@@ -58,6 +66,10 @@ export class Intercom {
    * @param {object} [data]
    */
   update(data?: Any) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (data) {
       return (<any>window).Intercom("update", data);
     } else {
@@ -69,6 +81,10 @@ export class Intercom {
    * This will hide the main Messenger panel if it is open. It will not hide the Messenger Launcher.
    */
   hide() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('hide');
   }
 
@@ -80,6 +96,10 @@ export class Intercom {
    * @param {string} [message]
    */
   show(message?: string) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (message) {
       return (<any>window).Intercom('show');
     } else {
@@ -91,6 +111,10 @@ export class Intercom {
    * To open the message window with the message list you can call `showMessages()`.
    */
   showMessages() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('showMessages');
   }
 
@@ -101,6 +125,10 @@ export class Intercom {
    * @param {string} message
    */
   showNewMessage(message?: string) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (message) {
       return (<any>window).Intercom('showNewMessage', message);
     } else {
@@ -116,6 +144,10 @@ export class Intercom {
    * @param {*} [metadata]
    */
   trackEvent(eventName: string, metadata?: any) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (metadata) {
       return (<any>window).Intercom('trackEvent', eventName, metadata);
     } else {
@@ -128,6 +160,10 @@ export class Intercom {
    * @returns {string}
    */
   getVisitorId(): string {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('getVisitorId');
   }
 
@@ -138,6 +174,10 @@ export class Intercom {
    * @type {string}
    */
   get visitorId(): string {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('getVisitorId');
   }
 
@@ -146,6 +186,10 @@ export class Intercom {
    * @param {() => void} handler
    */
   onShow(handler: () => void) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('onShow', handler);
   }
 
@@ -155,6 +199,10 @@ export class Intercom {
    * @param {() => void} handler
    */
   onHide(handler: () => void) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('onHide', handler);
   }
 
@@ -163,6 +211,10 @@ export class Intercom {
    * @param {(unreadCount?: number) => void} handler
    */
   onUnreadCountChange(handler: (unreadCount?: number) => void) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('onUnreadCountChange', handler);
   }
 }
