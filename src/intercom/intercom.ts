@@ -18,7 +18,7 @@ export class Intercom {
     @Optional() @Inject(Router) private router: Router,
     @Inject(PLATFORM_ID) protected platformId: Object,
   ) {
-    if(isPlatformBrowser()) {
+    if(isPlatformBrowser(this.platformId)) {
       loadIntercom(config);
     }
     
