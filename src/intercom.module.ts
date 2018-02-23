@@ -8,7 +8,6 @@ import { IntercomShutdownDirective } from './directives/shutdown.directive';
 import { IntercomTrackEventDirective } from './directives/track-event.directive';
 import { Intercom } from './intercom/intercom';
 import { IntercomConfig } from './shared/intercom-config';
-import { loadIntercom } from './util/load-intercom';
 
 
 @NgModule({

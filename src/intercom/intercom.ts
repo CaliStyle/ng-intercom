@@ -1,9 +1,9 @@
-import { Inject, Injectable, InjectionToken, Optional, isDevMode } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, InjectionToken, Optional, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { IntercomConfig } from '../shared/intercom-config';
 import { Any, BootInput } from '../types/boot-input';
-import { loadIntercom } from '../util/load-intercom';
 
 /**
  * A provider with every Intercom.JS method
@@ -12,11 +12,20 @@ import { loadIntercom } from '../util/load-intercom';
  */
 @Injectable()
 export class Intercom {
+
+  id: string;
+
   constructor(
     @Inject(IntercomConfig) private config: IntercomConfig,
     @Optional() @Inject(Router) private router: Router,
+    @Inject(PLATFORM_ID) protected platformId: Object,
   ) {
-    loadIntercom(config);
+
+    if(!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    this.loadIntercom(config);
     if (config.updateOnRouterChange) {
       this.router.events.subscribe(event => {
         this.update();
@@ -31,6 +40,10 @@ export class Intercom {
    * @param {object} [intercomData] Your intercom configuration
    */
   boot(intercomData?: BootInput) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+    
     let data = {
       ...intercomData,
       app_id: this.config.appId
@@ -43,6 +56,10 @@ export class Intercom {
    * If you have the Respond product (combined with another product like Engage) you should call the Intercom shutdown method to clear your users’ conversations anytime they logout of your application. Otherwise, the cookie we use to track who was most recently logged in on a given device or computer will keep these conversations in the Messenger for one week. This method will effectively clear out any user data that you have been passing through the JS API.
    */
   shutdown() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom("shutdown");
   }
 
@@ -53,6 +70,10 @@ export class Intercom {
    * @param {object} [data]
    */
   update(data?: Any) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (data) {
       return (<any>window).Intercom("update", data);
     } else {
@@ -64,6 +85,10 @@ export class Intercom {
    * This will hide the main Messenger panel if it is open. It will not hide the Messenger Launcher.
    */
   hide() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('hide');
   }
 
@@ -75,6 +100,10 @@ export class Intercom {
    * @param {string} [message]
    */
   show(message?: string) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (message) {
       return (<any>window).Intercom('show');
     } else {
@@ -86,6 +115,10 @@ export class Intercom {
    * To open the message window with the message list you can call `showMessages()`.
    */
   showMessages() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('showMessages');
   }
 
@@ -96,6 +129,10 @@ export class Intercom {
    * @param {string} message
    */
   showNewMessage(message?: string) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (message) {
       return (<any>window).Intercom('showNewMessage', message);
     } else {
@@ -111,6 +148,10 @@ export class Intercom {
    * @param {*} [metadata]
    */
   trackEvent(eventName: string, metadata?: any) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (metadata) {
       return (<any>window).Intercom('trackEvent', eventName, metadata);
     } else {
@@ -123,6 +164,10 @@ export class Intercom {
    * @returns {string}
    */
   getVisitorId(): string {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('getVisitorId');
   }
 
@@ -133,6 +178,10 @@ export class Intercom {
    * @type {string}
    */
   get visitorId(): string {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('getVisitorId');
   }
 
@@ -141,6 +190,10 @@ export class Intercom {
    * @param {() => void} handler
    */
   onShow(handler: () => void) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('onShow', handler);
   }
 
@@ -150,6 +203,10 @@ export class Intercom {
    * @param {() => void} handler
    */
   onHide(handler: () => void) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('onHide', handler);
   }
 
@@ -158,6 +215,44 @@ export class Intercom {
    * @param {(unreadCount?: number) => void} handler
    */
   onUnreadCountChange(handler: (unreadCount?: number) => void) {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     return (<any>window).Intercom('onUnreadCountChange', handler);
   }
+
+  l() {
+    let d = document;
+    var s = d.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = `https://widget.intercom.io/widget/` + this.id;
+    var x = d.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+  }
+  
+  loadIntercom(config: IntercomConfig) {
+    this.id = config.appId;
+    var w = <any>window;
+    var ic = w.Intercom;
+    if (typeof ic === 'function') {
+      ic('reattach_activator');
+      ic('update', config);
+    } else {
+      let i: any = function () {
+        i.c(arguments);
+      };
+      i.q = [];
+      i.c = function (args: any) {
+        i.q.push(args);
+      };
+      w.Intercom = i;
+      if (w.attachEvent) {
+        w.attachEvent('onload', this.l);
+      } else {
+        w.addEventListener('load', this.l, false);
+      }
+    }
+  };
 }
