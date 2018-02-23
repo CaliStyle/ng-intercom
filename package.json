@@ -1,6 +1,6 @@
 {
   "name": "angularx-intercom",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "An Intercom wrapper for Angular",
   "main": "./dist/index",
   "repository": {

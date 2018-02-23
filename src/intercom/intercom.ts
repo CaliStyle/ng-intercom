@@ -4,7 +4,6 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { IntercomConfig } from '../shared/intercom-config';
 import { Any, BootInput } from '../types/boot-input';
-import { loadIntercom } from '../util/load-intercom';
 
 /**
  * A provider with every Intercom.JS method
@@ -13,16 +12,20 @@ import { loadIntercom } from '../util/load-intercom';
  */
 @Injectable()
 export class Intercom {
+
+  id: string;
+
   constructor(
     @Inject(IntercomConfig) private config: IntercomConfig,
     @Optional() @Inject(Router) private router: Router,
     @Inject(PLATFORM_ID) protected platformId: Object,
   ) {
 
-    if(isPlatformServer(this.platformId)) {
+    if(!isPlatformBrowser(this.platformId)) {
       return;
     }
-    loadIntercom(config);
+
+    this.loadIntercom(config);
     if (config.updateOnRouterChange) {
       this.router.events.subscribe(event => {
         this.update();
@@ -218,4 +221,38 @@ export class Intercom {
 
     return (<any>window).Intercom('onUnreadCountChange', handler);
   }
+
+  l() {
+    let d = document;
+    var s = d.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = `https://widget.intercom.io/widget/` + this.id;
+    var x = d.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+  }
+  
+  loadIntercom(config: IntercomConfig) {
+    this.id = config.appId;
+    var w = <any>window;
+    var ic = w.Intercom;
+    if (typeof ic === 'function') {
+      ic('reattach_activator');
+      ic('update', config);
+    } else {
+      let i: any = function () {
+        i.c(arguments);
+      };
+      i.q = [];
+      i.c = function (args: any) {
+        i.q.push(args);
+      };
+      w.Intercom = i;
+      if (w.attachEvent) {
+        w.attachEvent('onload', this.l);
+      } else {
+        w.addEventListener('load', this.l, false);
+      }
+    }
+  };
 }
