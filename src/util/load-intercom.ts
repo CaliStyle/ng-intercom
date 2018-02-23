@@ -1,9 +1,10 @@
 import { IntercomConfig } from '../shared/intercom-config';
 
 let id: string;
-let d = document;
+let d;
 
 function l() {
+  d = document;
   var s = d.createElement('script');
   s.type = 'text/javascript';
   s.async = true;

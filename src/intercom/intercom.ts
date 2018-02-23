@@ -18,10 +18,11 @@ export class Intercom {
     @Optional() @Inject(Router) private router: Router,
     @Inject(PLATFORM_ID) protected platformId: Object,
   ) {
-    if(isPlatformBrowser(this.platformId)) {
-      loadIntercom(config);
+
+    if(isPlatformServer(this.platformId)) {
+      return;
     }
-    
+    loadIntercom(config);
     if (config.updateOnRouterChange) {
       this.router.events.subscribe(event => {
         this.update();
