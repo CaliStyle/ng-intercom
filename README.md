@@ -1,6 +1,9 @@
-# Angular Intercom
+# ng-intercom
 
-[![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom) [![npm](https://img.shields.io/npm/dm/ng-intercom.svg)](https://www.npmjs.com/ng-intercom) [![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
+[![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom)
+[![npm](https://img.shields.io/npm/dm/ng-intercom.svg)](https://www.npmjs.com/ng-intercom)
+[![Build status][ci-image]][ci-url]
+[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 
 This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
 
@@ -71,7 +74,18 @@ export class AppComponent implements OnInit {
 ```
 
 ### Development
-To compile, just run `npm run build`. It will compile into the dist directory. 
+To run live testing: `ng test`
+
+To run tests: `npm test`
+
+To run distribution: `npm run build:dist`
+
+To publish `npm run build:dist && npm publish dist`
+
 
 ### Credits
 Maintained by [Scott Wyatt](https://github.com/scott-wyatt) and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017 with contributions from [Florian Reifschneider](https://github.com/flore2003), [Devon Sams](https://www.twitter.com/POS1TRON), and [Humberto Rocha](https://github.com/humrochagf)
+
+
+[ci-image]: https://img.shields.io/circleci/project/github/CaliStyle/NgEngine/master.svg
+[ci-url]: https://circleci.com/gh/CaliStyle/NgEngine/tree/master

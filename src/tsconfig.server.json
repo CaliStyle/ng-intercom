@@ -1,0 +1,27 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/server",
+    "baseUrl": "./",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "server.ts",
+    "server.test.ts",
+    "trails.config.ts"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "app/root/app.server.module#AppServerModule"
+  }
+}

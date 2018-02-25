@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Google Fonts
+@import url('http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// Font Variables
+$roboto-slab: 'Roboto Slab', serif;
+$open-sans: 'Open Sans', sans-serif;
+
+// Fonts
+$body-font: $open-sans;
+$header-font: $open-sans;
+
+// Styles
+body {
+  font-family: $body-font;
+  font-weight: normal;
+  margin: 0px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  font-weight: normal;
+}

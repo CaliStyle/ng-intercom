@@ -1,0 +1,40 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    [mode]="sidenav.mode"
+    [opened]="sidenav.opened"
+    [fixedInViewport]="sidenav.fixedInViewport"
+    [fixedTopGap]="sidenav.fixedTopGap"
+    [fixedBottomGap]="sidenav.fixedBottomGap"
+  >
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="."
+      >
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a
+        mat-list-item
+        [routerLink]="['./404']"
+      >
+        404
+      </a>
+      <a
+        mat-list-item
+        [routerLink]="['./500']"
+      >
+        500
+      </a>
+      <a
+        mat-list-item
+        href="https://cali-style.com"
+      >
+        CS Technologies
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

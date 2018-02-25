@@ -1,0 +1,6 @@
+--reporter spec
+--recursive
+--full-trace
+--no-exit
+--slow 50
+--globals app,Zone,ng,__coverage__,__core-js_shared__
