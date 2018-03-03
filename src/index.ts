@@ -1,9 +1,0 @@
-export { Intercom } from './intercom/intercom';
-export { IntercomConfig } from './shared/intercom-config';
-export { IntercomHideDirective } from './directives/hide.directive';
-export { IntercomModule } from './intercom.module';
-export { IntercomShowDirective } from './directives/show.directive';
-export { IntercomShowMessagesDirective } from './directives/show-messages.directive';
-export { IntercomShowNewMessageDirective } from './directives/show-new-message.directive';
-export { IntercomShutdownDirective } from './directives/shutdown.directive';
-export { IntercomTrackEventDirective } from './directives/track-event.directive';

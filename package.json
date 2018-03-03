@@ -1,46 +1,136 @@
 {
   "name": "ng-intercom",
   "version": "1.0.0-beta.11",
-  "description": "An Intercom wrapper for Angular",
-  "main": "./dist/index",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CaliStyle/angular2-intercom.git"
+    "url": "git+https://github.com/CaliStyle/ng-intercom.git"
   },
   "keywords": [
     "Intercom",
     "Angular"
   ],
-  "scripts": {
-    "build": "ngc -p ./tsconfig.json"
-  },
   "author": "scott-wyatt",
   "contributors": [
     "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)"
   ],
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CaliStyle/angular2-intercom/issues"
+    "url": "https://github.com/CaliStyle/ng-intercom/issues"
   },
-  "homepage": "https://github.com/CaliStyle/angular2-intercom#readme",
+  "homepage": "https://github.com/CaliStyle/ng-intercom#readme",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "run-s build:client build:aot build:server",
+    "build:prod": "run-s build:client:prod build:aot:prod build:server",
+    "build:staging": "run-s build:client:staging build:aot:staging build:server:staging",
+    "build:testing": "run-s build:client:testing build:aot:testing build:server:testing",
+    "build:client": "ng build --app 0",
+    "build:client:prod": "ng build -prod --build-optimizer --app 0",
+    "build:client:staging": "ng build --environment=staging --app 0",
+    "build:client:testing": "ng build --environment=testing --app 0",
+    "build:aot": "ng build --aot --app 1",
+    "build:aot:prod": "ng build --aot --app 1",
+    "build:aot:staging": "ng build --aot --app 1",
+    "build:aot:testing": "ng build --aot --app 1",
+    "build:server": "webpack",
+    "build:server:staging": "webpack",
+    "build:server:testing": "webpack",
+    "build:server:prod": "webpack -p",
+    "build:prod:ngsw": "npm run build:prod && npm run ngsw:config && npm run ngsw:copy",
+    "serve:prod": "npm run build:prod && node dist/server",
+    "serve:prod:ngsw": "npm run build:prod:ngsw && node dist/server",
+    "build:dist": "ng-packagr -p ng-package.json",
+    "ngsw:config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
+    "ngsw:copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
+    "test": "run-s test:ng test:e2e test:server",
+    "test:ng": "ng test --watch=false",
+    "test:e2e": "ng e2e",
+    "test:ng:watch": "ng test",
+    "test:server": "npm run build && mocha",
+    "lint": "eslint --fix . && ng lint --fix .",
+    "e2e": "ng e2e",
+    "heroku-postbuild": "npm run build:prod"
+  },
+  "main": "./dist/server.js",
   "peerDependencies": {
     "@angular/core": ">=5.0.0 <6.0.0",
     "@angular/router": ">=5.0.0 <6.0.0"
   },
   "devDependencies": {
-    "@angular/common": "^5.0.0",
-    "@angular/compiler": "^5.0.0",
-    "@angular/compiler-cli": "^5.0.0",
-    "@angular/core": "^5.0.0",
-    "@angular/platform-browser": "^5.0.0",
-    "@angular/router": "^5.0.0",
-    "codelyzer": "^4.0.0",
+    "@angular/animations": "^5.2.0",
+    "@angular/cdk": "^5.1.1",
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/forms": "^5.2.0",
+    "@angular/http": "^5.2.0",
+    "@angular/material": "^5.2.1",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/platform-server": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "@angular/service-worker": "^5.2.3",
+    "@ngrx/effects": "^5.1.0",
+    "@ngrx/entity": "^5.1.0",
+    "@ngrx/router-store": "^5.0.1",
+    "@ngrx/store": "^5.1.0",
+    "@ngrx/store-devtools": "^5.1.0",
+    "@nguniversal/express-engine": "^5.0.0-beta.5",
+    "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.5",
+    "core-js": "^2.4.1",
+    "express": "^4.16.2",
+    "hammerjs": "^2.0.8",
     "rxjs": "^5.5.2",
-    "tsickle": "0.24.1",
-    "tslint": "^5.8.0",
-    "typescript": "^2.4.2",
-    "zone.js": "0.8.18"
+    "trailpack-express": "^2.0.6",
+    "trailpack-proxy-router": "^2.1.1",
+    "trailpack-repl": "^2.1.0",
+    "trailpack-router": "^2.0.0",
+    "trails": "^2.0.0",
+    "winston": "^2.2",
+    "zone.js": "^0.8.14",
+    "@angular/cli": "1.6.7",
+    "@angular/compiler-cli": "^5.2.0",
+    "@angular/language-service": "^5.2.0",
+    "@types/jasmine": "~2.8.3",
+    "@types/jasminewd2": "~2.0.2",
+    "@types/node": "~9.4.0",
+    "@types/winston": "^2.2.20-alpha",
+    "codelyzer": "^4.0.1",
+    "eslint": "^4.17.0",
+    "eslint-config-trails": "^3.1.0",
+    "jasmine-core": "~2.8.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~2.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "mocha": "^3.0.2",
+    "ng-engine": "^2.0.0",
+    "ng-packagr": "^1.6.0",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "protractor": "~5.1.2",
+    "supertest": "^3.0.0",
+    "ts-loader": "^3.1.1",
+    "ts-node": "~4.1.0",
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.1",
+    "webpack-node-externals": "^1.6.0"
   },
-  "typings": "./dist/index",
-  "dependencies": {}
+  "engines": {
+    "node": ">= 6.0.0 < 7.0.0",
+    "npm": ">= 3"
+  },
+  "eslintConfig": {
+    "extends": "trails",
+    "env": {
+      "mocha": true
+    },
+    "rules": {
+      "nomen": 0
+    }
+  }
 }
