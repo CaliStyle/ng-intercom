@@ -7,8 +7,6 @@ import { Any, BootInput } from '../types/boot-input'
 
 /**
  * A provider with every Intercom.JS method
- * @export
- * @class Intercom
  */
 @Injectable()
 export class Intercom {
@@ -46,7 +44,6 @@ export class Intercom {
    * If you'd like to control when Intercom is loaded, you can use the 'boot' method.
    * This is useful in situations like a one-page Javascript based application where the user may not be logged in
    * when the page loads. You call this method with the standard intercomSettings object.
-   * @param {object} [intercomData] Your intercom configuration
    */
   public boot(intercomData?: BootInput): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -83,7 +80,6 @@ export class Intercom {
    *
    * Calling the update method with a JSON object of user details will update those fields on the current user
    * in addition to logging an impression at the current URL and looking for new messages for the user.
-   * @param {object} [data]
    */
   public update(data?: Any): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -115,7 +111,6 @@ export class Intercom {
    *
    * If a `message` parameter is supplied, it will automatically open a new message window, aliasing showNewMessage().
    *
-   * @param {string} [message]
    */
   public show(message?: string): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -145,7 +140,6 @@ export class Intercom {
    * To open the message window with the new message view you can call showNewMessage().
    *
    * This function takes an optional parameter that can be used to pre-populate the message composer as shown below.
-   * @param {string} message
    */
   public showNewMessage(message?: string): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -166,8 +160,6 @@ export class Intercom {
    * The final parameter is a map that can be used to send optional metadata about the event.
    *
    * You can also add custom information to events in the form of event metadata.
-   * @param {string} eventName
-   * @param {*} [metadata]
    */
   public trackEvent(eventName: string, metadata?: any): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -186,7 +178,6 @@ export class Intercom {
    * A visitor is someone who goes to your site but does not use the messenger.
    * You can track these visitors via the visitor user_id.
    * This user_id can be used to retrieve the visitor or lead through the REST API.
-   * @returns {string}
    */
   public getVisitorId(): string {
     if (!isPlatformBrowser(this.platformId)) {
@@ -200,7 +191,6 @@ export class Intercom {
    * Alias for getVisitorId()
    * @alias getVisitorId()
    * @readonly
-   * @type {string}
    */
   get visitorId(): string {
     if (!isPlatformBrowser(this.platformId)) {
@@ -211,7 +201,6 @@ export class Intercom {
 
   /**
    * Gives you the ability to hook into the show event. Requires a function argument.
-   * @param {() => void} handler
    */
   public onShow(handler: () => void): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -222,8 +211,6 @@ export class Intercom {
 
   /**
    * Gives you the ability to hook into the hide event. Requires a function argument.
-   *
-   * @param {() => void} handler
    */
   public onHide(handler: () => void): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -234,7 +221,6 @@ export class Intercom {
 
   /**
    * This method allows you to register a function that will be called when the current number of unread messages changes.
-   * @param {(unreadCount?: number) => void} handler
    */
   public onUnreadCountChange(handler: (unreadCount?: number) => void): void {
     if (!isPlatformBrowser(this.platformId)) {
