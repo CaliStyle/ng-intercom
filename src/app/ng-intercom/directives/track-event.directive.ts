@@ -1,7 +1,7 @@
 import {Directive, HostListener, Input} from '@angular/core'
 
 import {Intercom} from '../intercom/intercom'
-
+/* tslint:disable:directive-selector */
 @Directive({
   selector: '[intercomTrackEvent]'
 })
@@ -14,7 +14,7 @@ export class IntercomTrackEventDirective {
   }
 
   @HostListener('click')
-  onClick() {
+  public onClick(): void {
     const e = this.event ? this.event : this.intercomTrackEvent
     if (e && this.metadata) {
       this.intercom.trackEvent(e, this.metadata)

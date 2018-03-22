@@ -2,6 +2,7 @@ import { Directive, HostListener, Input } from '@angular/core'
 
 import { Intercom } from '../intercom/intercom'
 
+/* tslint:disable:directive-selector */
 @Directive({
   selector: '[intercomHide]'
 })
@@ -13,7 +14,7 @@ export class IntercomHideDirective {
   ) { }
 
   @HostListener('click')
-  onClick() {
+  public onClick(): void {
     if (this.intercomHide !== false) {
         this.intercom.hide()
     }

@@ -2,6 +2,7 @@ import {Directive, HostListener, Input} from '@angular/core'
 
 import {Intercom} from '../intercom/intercom'
 
+/* tslint:disable:directive-selector */
 @Directive({
   selector: '[intercomShutdown]'
 })
@@ -12,8 +13,8 @@ export class IntercomShutdownDirective {
   }
 
   @HostListener('click')
-  onClick() {
-    if (this.intercomShutdown != false) {
+  public onClick(): void {
+    if (this.intercomShutdown !== false) {
       this.intercom.shutdown()
     }
   }
