@@ -121,7 +121,7 @@
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
-    "node": ">= 6.0.0 < 7.0.0",
+    "node": ">= 6.0.0",
     "npm": ">= 3"
   },
   "eslintConfig": {
