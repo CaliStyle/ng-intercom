@@ -230,9 +230,9 @@ export class Intercom {
   }
 
   l(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
+    // if (!isPlatformBrowser(this.platformId)) {
+    //   return
+    // }
 
     const d = document
     const s = d.createElement('script')
@@ -244,9 +244,9 @@ export class Intercom {
   }
 
   loadIntercom(config: IntercomConfig): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
+    // if (!isPlatformBrowser(this.platformId)) {
+    //   return
+    // }
 
     this.id = config.appId
     const w = <any>window
