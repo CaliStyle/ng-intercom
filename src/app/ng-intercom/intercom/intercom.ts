@@ -50,10 +50,10 @@ export class Intercom {
       return
     }
 
-    const data = Object.assign({}, {
+    const data = {
       ...intercomData,
       app_id: this.config.appId
-    })
+    }
 
     return (<any>window).Intercom('boot', data)
   }
