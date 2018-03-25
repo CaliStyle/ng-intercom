@@ -2,6 +2,7 @@ import {Directive, HostListener, Input} from '@angular/core'
 
 import {Intercom} from '../intercom/intercom'
 
+/* tslint:disable:directive-selector */
 @Directive({
   selector: '[intercomShowNewMessage]'
 })

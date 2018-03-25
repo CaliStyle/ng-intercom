@@ -2,6 +2,7 @@ import {Directive, HostListener, Input} from '@angular/core'
 
 import {Intercom} from '../intercom/intercom'
 
+/* tslint:disable:directive-selector */
 @Directive({
   selector: '[intercomShow]'
 })
@@ -13,7 +14,7 @@ export class IntercomShowDirective {
   }
 
   @HostListener('click')
-  onClick() {
+  public onClick(): void {
     const msg = this.message ? this.message : this.intercomShow
     if (msg) {
       this.intercom.showNewMessage(this.message)

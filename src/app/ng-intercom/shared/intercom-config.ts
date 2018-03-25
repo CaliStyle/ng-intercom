@@ -1,4 +1,4 @@
 export class IntercomConfig {
-    appId: string
-    updateOnRouterChange?: boolean
+  appId: string
+  updateOnRouterChange?: boolean
 }

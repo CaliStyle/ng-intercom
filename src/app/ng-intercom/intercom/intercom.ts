@@ -7,8 +7,6 @@ import { Any, BootInput } from '../types/boot-input'
 
 /**
  * A provider with every Intercom.JS method
- * @export
- * @class Intercom
  */
 @Injectable()
 export class Intercom {
@@ -17,15 +15,18 @@ export class Intercom {
 
   constructor(
     @Inject(IntercomConfig) private config: IntercomConfig,
-    @Optional() @Inject(Router) private router: Router,
-    @Inject(PLATFORM_ID) protected platformId: Object
+    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Optional() @Inject(Router) private router: Router
   ) {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
 
+    // Run load and attacht to window
     this.loadIntercom(config)
-    if (config.updateOnRouterChange) {
+
+    // Subscribe to router changes
+    if (config && config.updateOnRouterChange) {
       this.router.events.subscribe(event => {
         this.update()
       })
@@ -43,9 +44,8 @@ export class Intercom {
    * If you'd like to control when Intercom is loaded, you can use the 'boot' method.
    * This is useful in situations like a one-page Javascript based application where the user may not be logged in
    * when the page loads. You call this method with the standard intercomSettings object.
-   * @param {object} [intercomData] Your intercom configuration
    */
-  boot(intercomData?: BootInput) {
+  public boot(intercomData?: BootInput): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -65,7 +65,7 @@ export class Intercom {
    * or computer will keep these conversations in the Messenger for one week.
    * This method will effectively clear out any user data that you have been passing through the JS API.
    */
-  shutdown() {
+  public shutdown(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -80,9 +80,8 @@ export class Intercom {
    *
    * Calling the update method with a JSON object of user details will update those fields on the current user
    * in addition to logging an impression at the current URL and looking for new messages for the user.
-   * @param {object} [data]
    */
-  update(data?: Any) {
+  public update(data?: Any): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -98,7 +97,7 @@ export class Intercom {
   /**
    * This will hide the main Messenger panel if it is open. It will not hide the Messenger Launcher.
    */
-  hide() {
+  public hide(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -112,9 +111,8 @@ export class Intercom {
    *
    * If a `message` parameter is supplied, it will automatically open a new message window, aliasing showNewMessage().
    *
-   * @param {string} [message]
    */
-  show(message?: string) {
+  public show(message?: string): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -130,7 +128,7 @@ export class Intercom {
   /**
    * To open the message window with the message list you can call `showMessages()`.
    */
-  showMessages() {
+  public showMessages(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -142,9 +140,8 @@ export class Intercom {
    * To open the message window with the new message view you can call showNewMessage().
    *
    * This function takes an optional parameter that can be used to pre-populate the message composer as shown below.
-   * @param {string} message
    */
-  showNewMessage(message?: string) {
+  public showNewMessage(message?: string): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -163,10 +160,8 @@ export class Intercom {
    * The final parameter is a map that can be used to send optional metadata about the event.
    *
    * You can also add custom information to events in the form of event metadata.
-   * @param {string} eventName
-   * @param {*} [metadata]
    */
-  trackEvent(eventName: string, metadata?: any) {
+  public trackEvent(eventName: string, metadata?: any): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -183,9 +178,8 @@ export class Intercom {
    * A visitor is someone who goes to your site but does not use the messenger.
    * You can track these visitors via the visitor user_id.
    * This user_id can be used to retrieve the visitor or lead through the REST API.
-   * @returns {string}
    */
-  getVisitorId(): string {
+  public getVisitorId(): string {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -197,7 +191,6 @@ export class Intercom {
    * Alias for getVisitorId()
    * @alias getVisitorId()
    * @readonly
-   * @type {string}
    */
   get visitorId(): string {
     if (!isPlatformBrowser(this.platformId)) {
@@ -208,9 +201,8 @@ export class Intercom {
 
   /**
    * Gives you the ability to hook into the show event. Requires a function argument.
-   * @param {() => void} handler
    */
-  onShow(handler: () => void) {
+  public onShow(handler: () => void): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -219,10 +211,8 @@ export class Intercom {
 
   /**
    * Gives you the ability to hook into the hide event. Requires a function argument.
-   *
-   * @param {() => void} handler
    */
-  onHide(handler: () => void) {
+  public onHide(handler: () => void): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -231,16 +221,19 @@ export class Intercom {
 
   /**
    * This method allows you to register a function that will be called when the current number of unread messages changes.
-   * @param {(unreadCount?: number) => void} handler
    */
-  onUnreadCountChange(handler: (unreadCount?: number) => void) {
+  public onUnreadCountChange(handler: (unreadCount?: number) => void): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
     return (<any>window).Intercom('onUnreadCountChange', handler)
   }
 
-  l() {
+  l(): void {
+    // if (!isPlatformBrowser(this.platformId)) {
+    //   return
+    // }
+
     const d = document
     const s = d.createElement('script')
     s.type = 'text/javascript'
@@ -250,7 +243,11 @@ export class Intercom {
     x.parentNode.insertBefore(s, x)
   }
 
-  loadIntercom(config: IntercomConfig) {
+  loadIntercom(config: IntercomConfig): void {
+    // if (!isPlatformBrowser(this.platformId)) {
+    //   return
+    // }
+
     this.id = config.appId
     const w = <any>window
     const ic = w.Intercom
