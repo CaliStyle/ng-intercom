@@ -22,21 +22,26 @@ export class Intercom {
       return
     }
 
-    // Run load and attacht to window
-    this.loadIntercom(config)
+    if (config) {
+      if (!config.delayLoad) {
+        // Run load and attacht to window
+        this.loadIntercom(config)
+      }
 
-    // Subscribe to router changes
-    if (config && config.updateOnRouterChange) {
-      this.router.events.subscribe(event => {
-        this.update()
-      })
-    }
-    else if (isDevMode()) {
-      console.warn(`
+      // Subscribe to router changes
+      if (config.updateOnRouterChange) {
+        this.router.events.subscribe(event => {
+          this.update()
+        })
+      }
+
+      else if (isDevMode()) {
+        console.warn(`
       Common practice in single page applications is to update whenever the route changes.
       ng-intercom supports this functionality out of the box just set 'updateOnRouterChange' to true in your Intercom Module config.
        This warning will not appear in production, if you choose not to use router updating.
      `)
+      }
     }
   }
 
