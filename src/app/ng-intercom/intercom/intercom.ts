@@ -12,10 +12,11 @@ import { Any, BootInput } from '../types/boot-input'
 export class Intercom {
 
   private id: string
+  private config: IntercomConfig;
 
   constructor(
     @Inject(PLATFORM_ID) protected platformId: Object,
-    @Optional() @Inject(IntercomConfig) private config: IntercomConfig,
+    @Optional() @Inject(IntercomConfig) config: IntercomConfig,
     @Optional() @Inject(Router) private router: Router
   ) {
     if (!isPlatformBrowser(this.platformId)) {
@@ -235,6 +236,8 @@ export class Intercom {
     // if (!isPlatformBrowser(this.platformId)) {
     //   return
     // }
+
+    this.config = config
 
     this.id = config.appId
     const w = <any>window
