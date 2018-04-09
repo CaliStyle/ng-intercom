@@ -217,20 +217,6 @@ export class Intercom {
     return (<any>window).Intercom('onUnreadCountChange', handler)
   }
 
-  l(): void {
-    // if (!isPlatformBrowser(this.platformId)) {
-    //   return
-    // }
-
-    const d = document
-    const s = d.createElement('script')
-    s.type = 'text/javascript'
-    s.async = true
-    s.src = `https://widget.intercom.io/widget/${this.id}`
-    const x = d.getElementsByTagName('script')[0]
-    x.parentNode.insertBefore(s, x)
-  }
-
   loadIntercom(config: IntercomConfig): void {
     // if (!isPlatformBrowser(this.platformId)) {
     //   return
@@ -251,11 +237,13 @@ export class Intercom {
         i.q.push(args)
       }
       w.Intercom = i
-      if (w.attachEvent) {
-        w.attachEvent('onload', this.l.bind(this))
-      } else {
-        w.addEventListener('load', this.l.bind(this), false)
-      }
+      const d = document
+      const s = d.createElement('script')
+      s.type = 'text/javascript'
+      s.async = true
+      s.src = `https://widget.intercom.io/widget/${this.id}`
+      const x = d.getElementsByTagName('script')[0]
+      x.parentNode.insertBefore(s, x)
     }
 
     // Subscribe to router changes
