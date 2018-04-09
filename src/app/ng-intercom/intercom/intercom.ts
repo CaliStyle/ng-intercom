@@ -12,7 +12,6 @@ import { Any, BootInput } from '../types/boot-input'
 export class Intercom {
 
   private id: string
-  private config: IntercomConfig;
 
   constructor(
     @Inject(PLATFORM_ID) protected platformId: Object,
@@ -41,7 +40,7 @@ export class Intercom {
 
     const data = {
       ...intercomData,
-      app_id: this.config.appId
+      app_id: this.id,
     }
 
     return (<any>window).Intercom('boot', data)
@@ -237,8 +236,6 @@ export class Intercom {
     //   return
     // }
 
-    this.config = config
-
     this.id = config.appId
     const w = <any>window
     const ic = w.Intercom
@@ -255,9 +252,9 @@ export class Intercom {
       }
       w.Intercom = i
       if (w.attachEvent) {
-        w.attachEvent('onload', this.l)
+        w.attachEvent('onload', this.l.bind(this))
       } else {
-        w.addEventListener('load', this.l, false)
+        w.addEventListener('load', this.l.bind(this), false)
       }
     }
 
