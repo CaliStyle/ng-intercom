@@ -26,7 +26,7 @@
     "build:staging": "run-s build:client:staging build:aot:staging build:server:staging",
     "build:testing": "run-s build:client:testing build:aot:testing build:server:testing",
     "build:client": "ng build --app 0",
-    "build:client:prod": "ng build -prod --build-optimizer --app 0",
+    "build:client:prod": "ng build --prod --build-optimizer --app 0",
     "build:client:staging": "ng build --environment=staging --app 0",
     "build:client:testing": "ng build --environment=testing --app 0",
     "build:aot": "ng build --aot --app 1",
