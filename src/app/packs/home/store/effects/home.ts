@@ -2,12 +2,8 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Action } from '@ngrx/store'
 import { Actions, Effect, ofType } from '@ngrx/effects'
-import { Observable } from 'rxjs/Observable'
-import { of } from 'rxjs/observable/of'
-import { catchError, map, mergeMap } from 'rxjs/operators'
-
-import { defer } from 'rxjs/observable/defer'
-import { tap } from 'rxjs/operators'
+import { Observable ,  of ,  defer } from 'rxjs'
+import { catchError, map, mergeMap ,  tap } from 'rxjs/operators'
 
 import { NgEngineService } from 'ng-engine'
 
