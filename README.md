@@ -5,18 +5,18 @@
 [![Build status][ci-image]][ci-url]
 [![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 
-This is an Intercom wrapper for Angular 2+ with dependency injection for universal applications.
+This is an Intercom wrapper for Angular 2+ which supports AoT and SSR.
 
-It supports all documented intercom methods.
+It intends to supports all documented intercom methods and PRs for functionality is greatly appreciated.
 
 ### BETA VERSION
 
-`master` is now hosting the 1.0.0 beta version of `ng-intercom`. If you need to make changes to the latest stable version, please PR against `0.x.x`. If you need to use the last 0.x version, please run `npm install --save --save-exact ng-intercom@0.2`.
+`master` is now hosting the 6.0.0 beta version of `ng-intercom`. If you need to make changes to the latest stable version, please PR against `0.x.x`. If you need to use the last 0.x version, please run `npm install --save --save-exact ng-intercom@0.2`.
 
 If you find issues with this version, please file an issue as soon as possible so we can take a look at it. We appreciate your cooperation!
 
 ### ALPHA VERSION
-If you want to try the latest features, check out the 1.0.0-alpha branch! Features include automatic script loading and intercom directives! If you find an issue, please report it!
+If you want to try the latest features, check out the 6.0.0-alpha branch! Features include automatic script loading and intercom directives! If you find an issue, please report it!
 
 ### Installation
 

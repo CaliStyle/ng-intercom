@@ -1,6 +1,6 @@
 {
   "name": "ng-intercom",
-  "version": "1.0.0-beta.13",
+  "version": "6.0.0-beta.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
   ],
   "author": "scott-wyatt",
   "contributors": [
-    "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)"
+    "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)",
+    "Adam Koslun <adam.wamai@gmail.com> (https://normative.io)"
   ],
   "bugs": {
     "url": "https://github.com/CaliStyle/ng-intercom/issues"
