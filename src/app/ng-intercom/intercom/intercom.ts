@@ -229,18 +229,21 @@ export class Intercom {
     return (<any>window).Intercom('onUnreadCountChange', handler)
   }
 
-  l(): void {
+  l(conf: IntercomConfig): Function {
+
     // if (!isPlatformBrowser(this.platformId)) {
     //   return
     // }
-
-    const d = document
-    const s = d.createElement('script')
-    s.type = 'text/javascript'
-    s.async = true
-    s.src = `https://widget.intercom.io/widget/${this.id}`
-    const x = d.getElementsByTagName('head')[0]
-    x.appendChild(s)
+    return function (): void {
+      const d = document
+      const s = d.createElement('script')
+      s.type = 'text/javascript'
+      s.async = true
+      s.src = `https://widget.intercom.io/widget/${this.id}`
+      const x = d.getElementsByTagName('head')[0]
+      x.appendChild(s)
+        ; (<any>window).Intercom('update', conf)
+    }
   }
 
   loadIntercom(config: IntercomConfig): void {
@@ -264,10 +267,11 @@ export class Intercom {
       }
       w.Intercom = i
       if (w.attachEvent) {
-        w.attachEvent('onload', this.l)
+        w.attachEvent('onload', this.l(config))
       } else {
-        w.addEventListener('load', this.l, false)
+        w.addEventListener('load', this.l(config), false)
       }
     }
+
   }
 }
