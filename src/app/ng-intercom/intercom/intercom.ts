@@ -239,8 +239,8 @@ export class Intercom {
     s.type = 'text/javascript'
     s.async = true
     s.src = `https://widget.intercom.io/widget/${this.id}`
-    const x = d.getElementsByTagName('script')[0]
-    x.parentNode.insertBefore(s, x)
+    const x = d.getElementsByTagName('head')[0]
+    x.appendChild(s)
   }
 
   loadIntercom(config: IntercomConfig): void {
