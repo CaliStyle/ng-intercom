@@ -4,6 +4,8 @@ Before you submit an issue, please include:
 
 - [ ] Angular Version
 - [ ] Angular CLI Version
-- [ ] Node & NPM Version
+- [ ] ng-intercom Version
+- [ ] Node Version
+- [ ] NPM Version
 
 Detailed Description on how to reproduce error:
