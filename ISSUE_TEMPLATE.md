@@ -2,6 +2,7 @@
 
 ## Versions
 <!-- Please include version numbers so we can help reproduce your issue, and validate that you are on the latest versions. -->
+<!-- NOTE: before submitting your issue, be sure that your Angular and ng-intercom versions are the same "major" version (Angular 6.x.x and ng-intercom 6.x.x, for example). The plugin is not tested across versions, and mismatched major versions are not supported. -->
 
 - **Angular:** 
 - **Angular CLI:** 
