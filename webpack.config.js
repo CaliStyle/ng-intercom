@@ -2,6 +2,7 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
+  context: path.resolve(__dirname, '.'),
   entry: {
     'server': './src/server.ts',
     'server.test': './src/server.test.ts'
@@ -29,6 +30,7 @@ module.exports = {
             loader: 'ts-loader',
             options: {
               configFile: 'tsconfig.server.json'
+              // configFile: 'tsconfig.json'
             }
           }
         ]

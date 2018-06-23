@@ -7,7 +7,7 @@ import * as express from 'express'
 
 import { join } from 'path'
 
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('main.server')
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../main.server')
 
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
