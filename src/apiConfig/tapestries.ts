@@ -1,13 +1,13 @@
 /**
- * Footprints Configuration
- * (config.footprints)
+ * Tapestries Configuration
+ * (config.tapestries)
  *
- * Footprints are routes that are auto-generated from your model and controller
+ * Tapestries are routes that are auto-generated from your model and controller
  * definitions in api/controllers and api/models.
  *
- * @see http://trailsjs.io/doc/config/footprints
+ * @see https://fabrix.app/doc/config/tapestries
  */
-export const footprints = {
+export const tapestries = {
 
   /**
    * Generate routes for controller handlers.

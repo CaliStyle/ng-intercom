@@ -1,16 +1,15 @@
 /**
- * Exports the Trails Server
+ * Exports the Fabrix Server
  */
 
 import 'reflect-metadata'
 import 'zone.js/dist/zone-node'
 import { enableProdMode } from '@angular/core'
-
+import { FabrixApp } from '@fabrix/fabrix'
 enableProdMode()
 
-const TrailsApp = require('trails')
-const trails = require('./trails.config')
-const server = new TrailsApp(trails)
+const fabrix = require('./fabrix.config')
+const server = new FabrixApp(fabrix)
 
 server
   .start()

@@ -6,7 +6,7 @@
  * may be an important part of your international strategy.
  *
  *
- * @see http://trailsjs.io/doc/config/i18n
+ * @see https://fabrix.app/doc/config/i18n
  *
  */
 

@@ -1,10 +1,10 @@
 /**
  * Routes Configuration
- * (trails.config.routes)
+ * (fabrix.config.routes)
  *
  * Configure how routes map to views and controllers.
  *
- * @see http://trailsjs.io/doc/config/routes.js
+ * @see https://fabrix.app/doc/config/routes.js
  */
 
 'use strict'
