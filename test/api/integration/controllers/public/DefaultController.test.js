@@ -8,7 +8,7 @@ describe('Public DefaultController', () => {
 
   before((done) => {
     request = supertest('http://localhost:3000')
-    publicUser = supertest.agent(global.app.packs.express.server)
+    publicUser = supertest.agent(global.app.spools.express.server)
 
     done()
   })
@@ -25,7 +25,7 @@ describe('Public DefaultController', () => {
         assert.ok(res.body.app)
         assert.ok(res.body.node)
         assert.ok(res.body.libs)
-        assert.ok(res.body.trailpacks)
+        assert.ok(res.body.spools)
         done(err)
       })
   })

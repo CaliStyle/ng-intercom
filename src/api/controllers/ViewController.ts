@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-const Controller = require('trails/controller')
+import { FabrixController as Controller } from '@fabrix/fabrix/dist/common'
 
 /**
  * @module ViewController

@@ -1,12 +1,16 @@
 /**
- * Trailpack Configuration
+ * Spool Configuration
  * (app.config.main)
  *
- * @see http://trailsjs.io/doc/config/main
+ * @see https://fabrix.app/doc/config/main
  */
 
 import { resolve, join } from 'path'
 const DIST_FOLDER = join(process.cwd(), 'dist')
+
+import { REPLSpool } from '@fabrix/spool-repl'
+import { RouterSpool } from '@fabrix/spool-router'
+import { ExpressSpool } from '@fabrix/spool-express'
 
 export const main = {
 
@@ -14,21 +18,10 @@ export const main = {
    * Order does *not* matter. Each module is loaded according to its own
    * requirements.
    */
-  packs: [
-    require('trailpack-repl'),
-    require('trailpack-router'),
-    require('trailpack-express'),
-    // require('trailpack-proxy-cart'),
-    // require('trailpack-proxy-cart-countries'),
-    // require('trailpack-proxy-engine'),
-    // require('trailpack-proxy-generics'),
-    // require('trailpack-proxy-email'),
-    // require('trailpack-proxy-passport'),
-    // require('trailpack-proxy-permissions'),
-    // require('trailpack-proxy-notifications'),
-    // require('trailpack-proxy-router'),
-    // require('trailpack-proxy-sequelize'),
-    // require('trailpack-proxy-sitemap')
+  spools: [
+    REPLSpool,
+    RouterSpool,
+    ExpressSpool
   ],
 
   /**

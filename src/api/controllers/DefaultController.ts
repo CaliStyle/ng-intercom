@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
-const Controller = require('trails/controller')
+import { FabrixController as Controller } from '@fabrix/fabrix/dist/common'
 
 /**
  * @module DefaultController
  *
- * @description Default Controller included with a new Trails app
- * @see {@link http://trailsjs.io/doc/api/controllers}
- * @this TrailsApp
+ * @description Default Controller included with a new fabrix app
+ * @see {@link http://fabrixjs.io/doc/api/controllers}
+ * @this fabrixApp
  */
 
 export class DefaultController extends Controller {

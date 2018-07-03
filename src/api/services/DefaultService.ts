@@ -1,11 +1,11 @@
-const Service = require('trails/service')
+import { FabrixService as Service } from '@fabrix/fabrix/dist/common'
 
 /**
  * @module DefaultService
  *
- * @description Default Service included with a new Trails app
- * @see {@link http://trailsjs.io/doc/api/services}
- * @this TrailsApp
+ * @description Default Service included with a new fabrix app
+ * @see {@link http://fabrixjs.io/doc/api/services}
+ * @this fabrixApp
  */
 export class DefaultService extends Service {
 
@@ -13,11 +13,11 @@ export class DefaultService extends Service {
    * Return some info about this application
    */
   getApplicationInfo() {
-    const trailpacks = []
-    Object.keys(this.app.packs).forEach(packName => {
+    const spools = []
+    Object.keys(this.app.spools).forEach(packName => {
       if (packName !== 'inspect') {
-        const pack = this.app.packs[packName]
-        trailpacks.push({
+        const pack = this.app.spools[packName]
+        spools.push({
           name: pack.name,
           version: pack.pkg.version
         })
@@ -27,7 +27,7 @@ export class DefaultService extends Service {
       app: this.app.pkg.version,
       node: process.version,
       libs: process.versions,
-      trailpacks: trailpacks
+      spools: spools
     }
   }
 }
