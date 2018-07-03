@@ -1,3 +1,9 @@
-exports.pkg = require('../package.json')
-exports.config = require('./apiConfig')
-exports.api = require('./api')
+import * as pkg from '../package.json'
+import * as config from './apiConfig'
+import * as api from './api'
+
+export {
+  pkg,
+  config,
+  api
+}

@@ -8,8 +8,9 @@ import { enableProdMode } from '@angular/core'
 import { FabrixApp } from '@fabrix/fabrix'
 enableProdMode()
 
-const fabrix = require('./fabrix.config')
-const server = new FabrixApp(fabrix)
+import * as fabrixConfig from './fabrix.config'
+
+const server = new FabrixApp(fabrixConfig)
 
 server
   .start()

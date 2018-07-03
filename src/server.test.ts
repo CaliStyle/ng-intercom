@@ -7,6 +7,6 @@ import 'zone.js/dist/zone-node'
 import { enableProdMode } from '@angular/core'
 enableProdMode()
 
-const fabrixConfig = require('./fabrix.config')
+import * as fabrixConfig from './fabrix.config'
 
 module.exports.fabrixConfig = fabrixConfig
