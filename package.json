@@ -41,7 +41,7 @@
     "build:prod:ngsw": "npm run build:prod && npm run ngsw:config && npm run ngsw:copy",
     "serve:prod": "npm run build:prod && node dist/server",
     "serve:prod:ngsw": "npm run build:prod:ngsw && node dist/server",
-    "build:dist": "ng-packagr -p ng-package.json",
+    "build:dist": "npm run clean && ng-packagr -p ng-package.json",
     "ngsw:config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
     "ngsw:copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
     "test": "run-s test:ng test:e2e test:server",
@@ -51,7 +51,8 @@
     "test:server": "npm run build && mocha",
     "lint": "eslint --fix . && ng lint --fix .",
     "e2e": "ng e2e",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod",
+    "clean": "rm -rf dist"
   },
   "main": "./dist/server.js",
   "peerDependencies": {
