@@ -1,9 +1,15 @@
-We use issues to track bugs and fixes, so general questions or advice should be asked on Stack Overflow or the Gitter Channels. Non "Fix/Bug" issues may closed without a formal response. 
+<!-- We use issues to track bugs and fixes, so general questions or advice should be asked on Stack Overflow or the Gitter Channels. Non "Fix/Bug" issues may closed without a formal response. Issues that do not follow the issue template may be closed without formal response. -->
 
-Before you submit an issue, please include:
+## Versions
+<!-- Please include version numbers so we can help reproduce your issue, and validate that you are on the latest versions. -->
+<!-- NOTE: before submitting your issue, be sure that your Angular and ng-intercom versions are the same "major" version (Angular 6.x.x and ng-intercom 6.x.x, for example). The plugin is not tested across versions, and mismatched major versions are not supported. -->
 
-- [ ] Angular Version
-- [ ] Angular CLI Version
-- [ ] Node & NPM Version
+- **Angular:** 
+- **Angular CLI:** 
+- **ng-intercom:** 
+- **Node.JS:** 
+- **NPM:** 
 
-Detailed Description on how to reproduce error:
+## Description
+<!-- Please include a detailed description of your issue, with steps to reproduce, and a code or screen recording if that will help diagnose the issue. -->
+

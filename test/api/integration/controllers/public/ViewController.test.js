@@ -8,7 +8,7 @@ describe('Public ViewController', () => {
 
   before((done) => {
     request = supertest('http://localhost:3000')
-    publicUser = supertest.agent(global.app.packs.express.server)
+    publicUser = supertest.agent(global.app.spools.express.server)
 
     done()
   })
