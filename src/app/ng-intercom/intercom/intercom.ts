@@ -252,7 +252,12 @@ export class Intercom {
     s.type = 'text/javascript'
     s.async = true
     s.src = `https://widget.intercom.io/widget/${this.id}`
-    s.onload = afterInjectCallback
+
+    if (s.attachEvent) {
+      s.attachEvent('onload', afterInjectCallback)
+    } else {
+      s.addEventListener('load', afterInjectCallback, false)
+    }
 
     if (this.renderer2 && this.renderer2.appendChild) {
       this.renderer2.appendChild(this.document.head, s)
