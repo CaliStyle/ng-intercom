@@ -229,7 +229,7 @@ export class Intercom {
     return (<any>window).Intercom('onUnreadCountChange', handler)
   }
 
-  l(conf: IntercomConfig): Function {
+  injectIntercomScript(conf: IntercomConfig): Function {
 
     // if (!isPlatformBrowser(this.platformId)) {
     //   return
@@ -266,11 +266,7 @@ export class Intercom {
         i.q.push(args)
       }
       w.Intercom = i
-      if (w.attachEvent) {
-        w.attachEvent('onload', this.l(config))
-      } else {
-        w.addEventListener('load', this.l(config), false)
-      }
+      this.injectIntercomScript(config);
     }
 
   }
