@@ -1,5 +1,5 @@
 import { Inject, Injectable, PLATFORM_ID, Optional, isDevMode, Renderer2, RendererFactory2, ViewEncapsulation } from '@angular/core'
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 import { isPlatformBrowser } from '@angular/common'
 
@@ -60,7 +60,7 @@ export class Intercom {
     }
 
     // Run load and attach to window
-    this.loadIntercom(this.config, (event: Event) => {
+    this.loadIntercom(this.config, (event?: Event) => {
       // then boot the intercom js
       const data = {
         ...intercomData,
@@ -266,7 +266,7 @@ export class Intercom {
     (<any>window).Intercom('update', conf)
   }
 
-  loadIntercom(config: IntercomConfig, afterLoadCallback: (ev: Event) => any): void {
+  loadIntercom(config: IntercomConfig, afterLoadCallback: (ev?: Event) => any): void {
     // if (!isPlatformBrowser(this.platformId)) {
     //   return
     // }
@@ -277,6 +277,7 @@ export class Intercom {
     if (typeof ic === 'function') {
       ic('reattach_activator')
       ic('update', config)
+      afterLoadCallback()
     } else {
       const i: any = function () {
         i.c(arguments)

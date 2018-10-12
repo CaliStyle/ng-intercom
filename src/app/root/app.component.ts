@@ -1,5 +1,5 @@
 import { Inject, ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { Intercom, IntercomConfig } from '../ng-intercom';
+import { Intercom, IntercomConfig } from '../ng-intercom'
 
 @Component({
   selector: 'app-root',
@@ -16,12 +16,12 @@ export class AppComponent implements OnInit {
     fixedTopGap?: number,
     fixedBottomGap?: number
   } = {
-    mode: 'side',
-    opened: 'opened',
-    fixedInViewport: true,
-    fixedTopGap: 0,
-    fixedBottomGap: 0
-  }
+      mode: 'side',
+      opened: 'opened',
+      fixedInViewport: true,
+      fixedTopGap: 0,
+      fixedBottomGap: 0
+    }
 
   constructor(
     public intercom: Intercom
@@ -35,5 +35,15 @@ export class AppComponent implements OnInit {
         'activator': '#intercom'
       }
     })
+    setTimeout(() => {
+      this.intercom.shutdown()
+      setTimeout(() => this.intercom.boot({
+        app_id: 'klwzj86j',
+        // Supports all optional configuration.
+        widget: {
+          'activator': '#intercom'
+        }
+      }), 1000)
+    }, 1000)
   }
 }
