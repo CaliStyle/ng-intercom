@@ -1,1 +1,1 @@
-export * from './src/app/ng-intercom/index'
+export * from './src/app/ng-intercom'
