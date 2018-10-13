@@ -2,9 +2,9 @@ import { Inject, Injectable, PLATFORM_ID, Optional, RendererFactory2 } from '@an
 import { Router } from '@angular/router'
 import { isPlatformBrowser } from '@angular/common'
 
-import { IntercomConfig } from '../shared/intercom-config'
-import { Any, BootInput } from '../types/boot-input'
-import { Intercom } from '../intercom/intercom'
+import { IntercomConfig } from '../ng-intercom/shared/intercom-config'
+import { Any, BootInput } from '../ng-intercom/types/boot-input'
+import { Intercom } from '../ng-intercom/intercom/intercom'
 
 /**
  * A provider with every Intercom.JS method
