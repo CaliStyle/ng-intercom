@@ -21,7 +21,7 @@ export class Intercom {
     @Inject(PLATFORM_ID) protected platformId: Object,
     @Optional() @Inject(Router) private router: Router,
     private rendererFactory: RendererFactory2,
-    @Inject(DOCUMENT) private document
+    @Inject(DOCUMENT) private document: Document
   ) {
     if (!isPlatformBrowser(this.platformId)) {
       return
@@ -67,7 +67,7 @@ export class Intercom {
         app_id: this.config.appId
       }
 
-      return (<any>window).Intercom('boot', data)
+      return this.callIntercom('boot', data)
     })
   }
 
@@ -83,7 +83,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('shutdown')
+    return this.callIntercom('shutdown')
   }
 
   /**
@@ -99,12 +99,8 @@ export class Intercom {
       return
     }
 
-    if (data) {
-      return (<any>window).Intercom('update', data)
-    }
-    else {
-      return (<any>window).Intercom('update')
-    }
+    return this.callIntercom('update', data)
+
   }
 
   /**
@@ -115,7 +111,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('hide')
+    return this.callIntercom('hide')
   }
 
   /**
@@ -131,11 +127,10 @@ export class Intercom {
     }
 
     if (message) {
-      return (<any>window).Intercom('show')
-    }
-    else {
       return this.showNewMessage(message)
     }
+    return this.callIntercom('show')
+
   }
 
   /**
@@ -146,7 +141,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('showMessages')
+    return this.callIntercom('showMessages')
   }
 
   /**
@@ -158,13 +153,8 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
+    return this.callIntercom('showNewMessage', message)
 
-    if (message) {
-      return (<any>window).Intercom('showNewMessage', message)
-    }
-    else {
-      return (<any>window).Intercom('showNewMessage')
-    }
   }
 
   /**
@@ -174,18 +164,13 @@ export class Intercom {
    *
    * You can also add custom information to events in the form of event metadata.
    */
-  public trackEvent(eventName: string, metadata?: any): void {
+  public trackEvent(eventName: string, metadata?: string): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-
-    if (metadata) {
-      return (<any>window).Intercom('trackEvent', eventName, metadata)
-    }
-    else {
-      return (<any>window).Intercom('trackEvent', eventName)
-    }
+    return this.callIntercom('trackEvent', eventName, metadata)
   }
+
 
   /**
    * A visitor is someone who goes to your site but does not use the messenger.
@@ -197,7 +182,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('getVisitorId')
+    return this.callIntercom('getVisitorId')
   }
 
   /**
@@ -209,7 +194,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('getVisitorId')
+    return this.callIntercom('getVisitorId')
   }
 
   /**
@@ -219,7 +204,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('onShow', handler)
+    return this.callIntercom('onShow', handler)
   }
 
   /**
@@ -229,7 +214,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('onHide', handler)
+    return this.callIntercom('onHide', handler)
   }
 
   /**
@@ -239,7 +224,14 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('onUnreadCountChange', handler)
+    return this.callIntercom('onUnreadCountChange', handler)
+  }
+
+  private callIntercom(fn: string, ...args) {
+    if ((<any>window).Intercom) {
+      return (<any>window).Intercom(fn, ...args)
+    }
+    return
   }
 
   injectIntercomScript(conf: IntercomConfig, afterInjectCallback: (ev: Event) => any): void {
@@ -253,8 +245,8 @@ export class Intercom {
     s.async = true
     s.src = `https://widget.intercom.io/widget/${this.id}`
 
-    if (s.attachEvent) {
-      s.attachEvent('onload', afterInjectCallback)
+    if ((s as any).attachEvent) {
+      (s as any).attachEvent('onload', afterInjectCallback)
     } else {
       s.addEventListener('load', afterInjectCallback, false)
     }

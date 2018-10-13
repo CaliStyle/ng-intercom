@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
         'activator': '#intercom'
       }
     })
+
     setTimeout(() => {
       this.intercom.shutdown()
       setTimeout(() => this.intercom.boot({
