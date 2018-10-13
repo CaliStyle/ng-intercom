@@ -1,4 +1,5 @@
-import { Inject, Injectable, PLATFORM_ID, Optional, isDevMode } from '@angular/core'
+import { Inject, Injectable, PLATFORM_ID, Optional, isDevMode, Renderer2, RendererFactory2, ViewEncapsulation } from '@angular/core'
+import { DOCUMENT } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 import { isPlatformBrowser } from '@angular/common'
 
@@ -13,17 +14,26 @@ export class Intercom {
 
   private id: string
 
+  private renderer2: Renderer2
+
   constructor(
     @Inject(IntercomConfig) private config: IntercomConfig,
     @Inject(PLATFORM_ID) protected platformId: Object,
-    @Optional() @Inject(Router) private router: Router
+    @Optional() @Inject(Router) private router: Router,
+    private rendererFactory: RendererFactory2,
+    @Optional() @Inject(DOCUMENT) private document: any // Document
+
   ) {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
 
-    // Run load and attacht to window
-    this.loadIntercom(config)
+    this.renderer2 = this.rendererFactory.createRenderer(this.document, {
+      id: '-1',
+      encapsulation: ViewEncapsulation.None,
+      styles: [],
+      data: {}
+    })
 
     // Subscribe to router changes
     if (config && config.updateOnRouterChange) {
@@ -50,12 +60,16 @@ export class Intercom {
       return
     }
 
-    const data = {
-      ...intercomData,
-      app_id: this.config.appId
-    }
+    // Run load and attach to window
+    this.loadIntercom(this.config, (event?: Event) => {
+      // then boot the intercom js
+      const data = {
+        ...intercomData,
+        app_id: this.config.appId
+      }
 
-    return (<any>window).Intercom('boot', data)
+      return this.callIntercom('boot', data)
+    })
   }
 
   /**
@@ -70,7 +84,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('shutdown')
+    return this.callIntercom('shutdown')
   }
 
   /**
@@ -86,12 +100,8 @@ export class Intercom {
       return
     }
 
-    if (data) {
-      return (<any>window).Intercom('update', data)
-    }
-    else {
-      return (<any>window).Intercom('update')
-    }
+    return this.callIntercom('update', data)
+
   }
 
   /**
@@ -102,7 +112,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('hide')
+    return this.callIntercom('hide')
   }
 
   /**
@@ -118,11 +128,10 @@ export class Intercom {
     }
 
     if (message) {
-      return (<any>window).Intercom('show')
-    }
-    else {
       return this.showNewMessage(message)
     }
+    return this.callIntercom('show')
+
   }
 
   /**
@@ -133,7 +142,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('showMessages')
+    return this.callIntercom('showMessages')
   }
 
   /**
@@ -145,13 +154,8 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
+    return this.callIntercom('showNewMessage', message)
 
-    if (message) {
-      return (<any>window).Intercom('showNewMessage', message)
-    }
-    else {
-      return (<any>window).Intercom('showNewMessage')
-    }
   }
 
   /**
@@ -161,18 +165,13 @@ export class Intercom {
    *
    * You can also add custom information to events in the form of event metadata.
    */
-  public trackEvent(eventName: string, metadata?: any): void {
+  public trackEvent(eventName: string, metadata?: string): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-
-    if (metadata) {
-      return (<any>window).Intercom('trackEvent', eventName, metadata)
-    }
-    else {
-      return (<any>window).Intercom('trackEvent', eventName)
-    }
+    return this.callIntercom('trackEvent', eventName, metadata)
   }
+
 
   /**
    * A visitor is someone who goes to your site but does not use the messenger.
@@ -184,7 +183,7 @@ export class Intercom {
       return
     }
 
-    return (<any>window).Intercom('getVisitorId')
+    return this.callIntercom('getVisitorId')
   }
 
   /**
@@ -196,7 +195,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('getVisitorId')
+    return this.callIntercom('getVisitorId')
   }
 
   /**
@@ -206,7 +205,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('onShow', handler)
+    return this.callIntercom('onShow', handler)
   }
 
   /**
@@ -216,7 +215,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('onHide', handler)
+    return this.callIntercom('onHide', handler)
   }
 
   /**
@@ -226,30 +225,44 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return (<any>window).Intercom('onUnreadCountChange', handler)
+    return this.callIntercom('onUnreadCountChange', handler)
   }
 
-  l(conf: IntercomConfig): Function {
-
-    // if (!isPlatformBrowser(this.platformId)) {
-    //   return
-    // }
-    return function (): void {
-      const d = document
-      const s = d.createElement('script')
-      s.type = 'text/javascript'
-      s.async = true
-      s.src = `https://widget.intercom.io/widget/${this.id}`
-      const x = d.getElementsByTagName('head')[0]
-      x.appendChild(s)
-        ; (<any>window).Intercom('update', conf)
+  private callIntercom(fn: string, ...args) {
+    if ((<any>window).Intercom) {
+      return (<any>window).Intercom(fn, ...args)
     }
+    return
   }
 
-  loadIntercom(config: IntercomConfig): void {
-    // if (!isPlatformBrowser(this.platformId)) {
-    //   return
-    // }
+  injectIntercomScript(conf: IntercomConfig, afterInjectCallback: (ev: Event) => any): void {
+
+    if (!isPlatformBrowser(this.platformId)) {
+      return
+    }
+
+    const s = this.document.createElement('script')
+    s.type = 'text/javascript'
+    s.async = true
+    s.src = `https://widget.intercom.io/widget/${this.id}`
+
+    if ((s as any).attachEvent) {
+      (s as any).attachEvent('onload', afterInjectCallback)
+    } else {
+      s.addEventListener('load', afterInjectCallback, false)
+    }
+
+    if (this.renderer2 && this.renderer2.appendChild) {
+      this.renderer2.appendChild(this.document.head, s)
+    }
+
+    (<any>window).Intercom('update', conf)
+  }
+
+  loadIntercom(config: IntercomConfig, afterLoadCallback: (ev?: Event) => any): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return
+    }
 
     this.id = config.appId
     const w = <any>window
@@ -257,6 +270,7 @@ export class Intercom {
     if (typeof ic === 'function') {
       ic('reattach_activator')
       ic('update', config)
+      afterLoadCallback()
     } else {
       const i: any = function () {
         i.c(arguments)
@@ -266,11 +280,7 @@ export class Intercom {
         i.q.push(args)
       }
       w.Intercom = i
-      if (w.attachEvent) {
-        w.attachEvent('onload', this.l(config))
-      } else {
-        w.addEventListener('load', this.l(config), false)
-      }
+      this.injectIntercomScript(config, afterLoadCallback)
     }
 
   }

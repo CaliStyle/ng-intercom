@@ -4,69 +4,40 @@
  *
  * Configure how routes map to views and controllers.
  *
- * @see https://fabrix.app/doc/config/routes.js
+ * @see https://fabrix.app/docs/config/routes.js
  */
 
-'use strict'
-
-export const routes = [
+export const routes = {
   // Handle 404s and more
-  {
-    method: [ 'GET' ],
-    path: '/404',
-    handler: 'ViewController.index',
+  '/404': {
+    'GET': 'ViewController.index',
     config: {}
   },
-  {
-    method: [ 'GET' ],
-    path: '/500',
-    handler: 'ViewController.index',
+  '/500': {
+    'GET': 'ViewController.index',
     config: {}
   },
-  {
-    method: [ 'GET' ],
-    path: '/403',
-    handler: 'ViewController.index',
+  '/403': {
+    'GET': 'ViewController.index',
     config: {}
   },
-  {
-    method: [ 'GET' ],
-    path: '/401',
-    handler: 'ViewController.index',
+  '/401': {
+    'GET': 'ViewController.index',
     config: {}
   },
   /**
    * Render the view
    */
   // Home
-  {
-    method: [ 'GET' ],
-    path: '/',
-    handler: 'ViewController.index',
+  '/': {
+    'GET': 'ViewController.index',
     config: {}
   },
 
   /**
    * Constrain the DefaultController.info handler to accept only GET requests.
    */
-  {
-    method: [ 'GET' ],
-    path: '/api/v1/default/info',
-    handler: 'DefaultController.info',
-    config: {
-      app: {
-        proxyRouter: {
-          ignore: true
-        }
-      }
-    }
+  '/api/v1/default/info': {
+    'GET': 'DefaultController.info'
   }
-
-  // Proxy Router
-  // {
-  //   method: [ 'GET' ],
-  //   path: '/api/v1/proxy/*',
-  //   handler: 'ViewController.proxyRouter',
-  //   config: {}
-  // }
-]
+}

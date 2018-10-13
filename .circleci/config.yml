@@ -1,11 +1,20 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+
 version: 2
+
+defaults: &defaults
+  working_directory: ~/ng-intercom
+  docker:
+    - image: circleci/node:8-browsers
+      environment:
+      CHROME_BIN: "/usr/bin/google-chrome"
+
 jobs:
-  build:
-    working_directory: ~/ng-intercom
-    docker:
-      - image: circleci/node:8-browsers
-        environment:
-          CHROME_BIN: "/usr/bin/google-chrome"
+  test:
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -26,3 +35,48 @@ jobs:
       - run:
           name: test
           command: npm test
+      - run:
+          name: code-coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - store_artifacts:
+          path: test-results.xml
+          prefix: tests
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+      - store_test_results:
+          path: test-results.xml
+      - persist_to_workspace:
+          root: ~/ng-intercom
+          paths: .
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/ng-intercom
+      - run:
+          name: Build dist
+          command: npm run build:dist
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/ng-intercom/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish dist
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
