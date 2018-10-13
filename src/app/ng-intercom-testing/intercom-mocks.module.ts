@@ -4,7 +4,7 @@ import {
     Intercom, IntercomConfig, IntercomHideDirective, IntercomShowDirective,
     IntercomShowMessagesDirective, IntercomShowNewMessageDirective,
     IntercomShutdownDirective, IntercomTrackEventDirective
-} from '../index'
+} from '../ng-intercom/index'
 import { IntercomMocks } from './intercom-mocks'
 
 
