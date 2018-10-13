@@ -13,20 +13,20 @@ import { IntercomMocks } from './intercom-mocks'
         RouterTestingModule
     ],
     declarations: [
-        IntercomHideDirective,
-        IntercomShowMessagesDirective,
-        IntercomShowNewMessageDirective,
-        IntercomShowDirective,
-        IntercomShutdownDirective,
-        IntercomTrackEventDirective
+        // IntercomHideDirective,
+        // IntercomShowMessagesDirective,
+        // IntercomShowNewMessageDirective,
+        // IntercomShowDirective,
+        // IntercomShutdownDirective,
+        // IntercomTrackEventDirective
     ],
     exports: [
-        IntercomHideDirective,
-        IntercomShowMessagesDirective,
-        IntercomShowNewMessageDirective,
-        IntercomShowDirective,
-        IntercomShutdownDirective,
-        IntercomTrackEventDirective
+        // IntercomHideDirective,
+        // IntercomShowMessagesDirective,
+        // IntercomShowNewMessageDirective,
+        // IntercomShowDirective,
+        // IntercomShutdownDirective,
+        // IntercomTrackEventDirective
     ],
     providers: [
         {

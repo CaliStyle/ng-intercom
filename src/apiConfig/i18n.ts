@@ -6,11 +6,9 @@
  * may be an important part of your international strategy.
  *
  *
- * @see https://fabrix.app/doc/config/i18n
+ * @see https://fabrix.app/docs/config/i18n
  *
  */
-
-'use strict'
 
 export const i18n = {
 

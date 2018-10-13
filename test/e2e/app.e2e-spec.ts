@@ -10,7 +10,7 @@ describe('NgEngine App', () => {
   it('should display welcome message', () => {
     page.navigateTo('/')
     expect(page.getElementText('app-root h1')).toEqual('Welcome to NgEngine!')
-    // expect(page.getElementText('intercom-container')).toEqual('Welcome to NgEngine!')
+    // expect(page.getElementText('#intercom-container'))
   })
   it('should display 404', () => {
     page.navigateTo('/404')

@@ -1,4 +1,4 @@
-import { Inject, Injectable, PLATFORM_ID, Optional } from '@angular/core'
+import { Inject, Injectable, PLATFORM_ID, Optional, RendererFactory2 } from '@angular/core'
 import { Router } from '@angular/router'
 import { isPlatformBrowser } from '@angular/common'
 
@@ -17,7 +17,7 @@ export class IntercomMocks extends Intercom {
         @Inject(PLATFORM_ID) platformId: Object,
         @Optional() @Inject(Router) router: Router
     ) {
-        super(config, platformId, router)
+        super(config, platformId, router, null, null)
         if (!isPlatformBrowser(this.platformId)) {
             return
         }

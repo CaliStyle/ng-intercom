@@ -21,7 +21,8 @@ export class Intercom {
     @Inject(PLATFORM_ID) protected platformId: Object,
     @Optional() @Inject(Router) private router: Router,
     private rendererFactory: RendererFactory2,
-    @Inject(DOCUMENT) private document: Document
+    @Optional() @Inject(DOCUMENT) private document: any // Document
+
   ) {
     if (!isPlatformBrowser(this.platformId)) {
       return
@@ -236,9 +237,9 @@ export class Intercom {
 
   injectIntercomScript(conf: IntercomConfig, afterInjectCallback: (ev: Event) => any): void {
 
-    // if (!isPlatformBrowser(this.platformId)) {
-    //   return
-    // }
+    if (!isPlatformBrowser(this.platformId)) {
+      return
+    }
 
     const s = this.document.createElement('script')
     s.type = 'text/javascript'
@@ -259,9 +260,9 @@ export class Intercom {
   }
 
   loadIntercom(config: IntercomConfig, afterLoadCallback: (ev?: Event) => any): void {
-    // if (!isPlatformBrowser(this.platformId)) {
-    //   return
-    // }
+    if (!isPlatformBrowser(this.platformId)) {
+      return
+    }
 
     this.id = config.appId
     const w = <any>window
