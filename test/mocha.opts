@@ -3,4 +3,5 @@
 --full-trace
 --no-exit
 --slow 50
+--timeout 5000
 --globals app,Zone,ng,__coverage__,__core-js_shared__
