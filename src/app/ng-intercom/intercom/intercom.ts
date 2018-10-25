@@ -165,7 +165,7 @@ export class Intercom {
    *
    * You can also add custom information to events in the form of event metadata.
    */
-  public trackEvent(eventName: string, metadata?: string): void {
+  public trackEvent(eventName: string, metadata?: any): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
