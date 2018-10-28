@@ -31,7 +31,8 @@ import { IntercomConfig } from './shared/intercom-config'
     IntercomTrackEventDirective
   ],
   providers: [
-    Intercom
+    Intercom,
+    IntercomConfig
   ]
 })
 export class IntercomModule {
@@ -39,6 +40,7 @@ export class IntercomModule {
     return {
       ngModule: IntercomModule,
       providers: [
+        Intercom,
         { provide: IntercomConfig, useValue: config },
       ]
     }
