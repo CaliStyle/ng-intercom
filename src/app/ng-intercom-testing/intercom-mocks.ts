@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 import { isPlatformBrowser } from '@angular/common'
 
 import { IntercomConfig } from '../ng-intercom/shared/intercom-config'
-import { Any, BootInput } from '../ng-intercom/types/boot-input'
+import {  BootInput } from '../ng-intercom/types/boot-input'
 import { Intercom } from '../ng-intercom/intercom/intercom'
 
 /**
@@ -61,7 +61,7 @@ export class IntercomMocks extends Intercom {
      * Calling the update method with a JSON object of user details will update those fields on the current user
      * in addition to logging an impression at the current URL and looking for new messages for the user.
      */
-    public update(data?: Any): void {
+    public update(data?: any): void {
         return
     }
 

@@ -1,18 +1,10 @@
-export interface UserWithEmail {
-    email?: string;
-}
-
-export interface UserWithUid {
+export interface BootInput {
+    custom_launcher_selector?: string;
     user_id?: string;
-}
-
-export interface Any {
+    email?: string;
+    /**
+     * If no app_id is passed, the value on config will be used
+     */
+    app_id?: string;
     [propName: string]: any;
 }
-
-export interface DefaultBootInput {
-    custom_launcher_selector?: string;
-}
-
-export type BootInput = ((UserWithEmail | UserWithUid) & DefaultBootInput & Any) | DefaultBootInput
-

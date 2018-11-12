@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 import { isPlatformBrowser } from '@angular/common'
 
 import { IntercomConfig } from '../shared/intercom-config'
-import { Any, BootInput } from '../types/boot-input'
+import { BootInput } from '../types/boot-input'
 
 /**
  * A provider with every Intercom.JS method
@@ -59,13 +59,13 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-
+    const app_id = intercomData.app_id ? intercomData.app_id : this.config.appId
     // Run load and attach to window
     this.loadIntercom(this.config, (event?: Event) => {
       // then boot the intercom js
       const data = {
         ...intercomData,
-        app_id: this.config.appId
+        app_id
       }
 
       return this.callIntercom('boot', data)
@@ -95,7 +95,7 @@ export class Intercom {
    * Calling the update method with a JSON object of user details will update those fields on the current user
    * in addition to logging an impression at the current URL and looking for new messages for the user.
    */
-  public update(data?: Any): void {
+  public update(data?: any): void {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
