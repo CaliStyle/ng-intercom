@@ -19,7 +19,7 @@ export interface IntercomConfig {
      * Customize vertical padding
      */
     vertical_padding?: number
-    
+
     /**
      * arbitrarily localize your intercom messenger
      */
