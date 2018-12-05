@@ -1,6 +1,6 @@
 {
   "name": "ng-intercom",
-  "version": "7.0.0-beta.0",
+  "version": "7.0.0-beta.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   "author": "scott-wyatt",
   "contributors": [
     "Wilson Hobbs <wilsonhobbs1@gmail.com> (https://www.wilsonhobbs.com/)",
-    "Adam Koslun <adam.wamai@gmail.com> (https://normative.io)"
+    "Adam Koslun <adam.wamai@gmail.com> (https://normative.io)",
+    "Luca GOUTY (http://luca.gouty.fr)"
   ],
   "bugs": {
     "url": "https://github.com/CaliStyle/ng-intercom/issues"
@@ -74,7 +75,7 @@
     "@angular/platform-server": "^7.0.1",
     "@angular/router": "^7.0.1",
     "@angular/service-worker": "^7.0.1",
-    "@fabrix/fabrix": "^1.5.9",
+    "@fabrix/fabrix": "^1.6.0",
     "@fabrix/spool-express": "^1.5.1",
     "@fabrix/spool-repl": "^1.5.0",
     "@fabrix/spool-router": "^1.5.1",

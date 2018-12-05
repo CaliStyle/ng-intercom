@@ -84,7 +84,7 @@ To publish `npm run build:dist && npm publish dist`
 
 
 ### Credits
-Maintained by [Scott Wyatt](https://github.com/scott-wyatt) and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017 with contributions from [Florian Reifschneider](https://github.com/flore2003), [Devon Sams](https://www.twitter.com/POS1TRON), and [Humberto Rocha](https://github.com/humrochagf)
+Maintained by [Scott Wyatt](https://github.com/scott-wyatt) and [Wilson Hobbs](https://www.twitter.com/wbhob) in 2017 with contributions from [Florian Reifschneider](https://github.com/flore2003), [Devon Sams](https://www.twitter.com/POS1TRON), [Humberto Rocha](https://github.com/humrochagf), and [Luca GOUTY](http://luca.gouty.fr)
 
 
 [ci-image]: https://img.shields.io/circleci/project/github/CaliStyle/ng-intercom/master.svg
