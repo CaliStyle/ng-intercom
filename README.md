@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/ng-intercom.svg)](https://www.npmjs.com/package/ng-intercom)
 [![npm](https://img.shields.io/npm/dm/ng-intercom.svg)](https://www.npmjs.com/ng-intercom)
 [![Build status][ci-image]][ci-url]
-[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)]()
 
 This is an Intercom wrapper for Angular 2+ which supports AoT and SSR.
 

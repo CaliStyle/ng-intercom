@@ -19,15 +19,15 @@ export class HomeEffects {
     tap(() => this._ngEngine.log('HomeEffects.init$', 'Home Effects Initiated')),
   )
 
-  // Listen for the 'trails' actions
-  @Effect() trails$: Observable<Action> = this.actions$.pipe(
-    ofType('[Home] Trails'),
+  // Listen for the 'fabrix' actions
+  @Effect() fabrix$: Observable<Action> = this.actions$.pipe(
+    ofType('[Home] Fabrix'),
     mergeMap(action =>
       this.http.get(`${ this._ngEngine.config.get('app.API_URL') }/default/info`).pipe(
         // If successful, dispatch success action with result
-        map(data => ({ type: '[Home] Trails Success', payload: data })),
+        map(data => ({ type: '[Home] Fabrix Success', payload: data })),
         // If request fails, dispatch failed action
-        catchError((err) => of({ type: '[Home] Trails Failed', payload: err }))
+        catchError((err) => of({ type: '[Home] Fabrix Failed', payload: err }))
       )
     )
   )

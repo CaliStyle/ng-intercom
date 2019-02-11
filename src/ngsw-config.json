@@ -9,9 +9,7 @@
         "/assets/images/icons/favicon-16x16.ico",
         "/assets/images/icons/favicon-32x32.ico",
         "/assets/images/icons/favicon-96x96.ico",
-        "/views/index.ng.html"
-      ],
-      "versionedFiles": [
+        "/views/index.ng.html",
         "/*.bundle.css",
         "/*.bundle.js",
         "/*.chunk.js"

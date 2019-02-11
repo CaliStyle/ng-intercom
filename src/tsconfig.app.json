@@ -12,7 +12,7 @@
     "**/*.spec.ts",
     "server.ts",
     "server.test.ts",
-    "trails.config.ts"
+    "fabrix.config.ts"
   ],
   "angularCompilerOptions": {
     "entryModule": "app/root/app.module#AppModule"
