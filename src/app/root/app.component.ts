@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
     this.intercom.boot({
       app_id: 'klwzj86j',
       // Supports all optional configuration.
+      alignment: 'right',
       widget: {
         'activator': '#intercom'
       }
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit {
       setTimeout(() => this.intercom.boot({
         app_id: 'klwzj86j',
         // Supports all optional configuration.
+        alignment: 'left',
         widget: {
           'activator': '#intercom'
         }

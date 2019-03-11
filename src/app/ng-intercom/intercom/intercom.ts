@@ -56,6 +56,7 @@ export class Intercom {
    * when the page loads. You call this method with the standard intercomSettings object.
    */
   public boot(intercomData?: BootInput): void {
+    console.log('brk', intercomData)
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
@@ -241,6 +242,10 @@ export class Intercom {
       return
     }
 
+    // Set the window configuration to conf
+    (<any>window).intercomSettings = conf
+
+    // Create the intercom script in document
     const s = this.document.createElement('script')
     s.type = 'text/javascript'
     s.async = true
@@ -267,6 +272,10 @@ export class Intercom {
     this.id = config.appId
     const w = <any>window
     const ic = w.Intercom
+
+    // Set window config for Intercom
+    w.intercomSettings = config
+
     if (typeof ic === 'function') {
       ic('reattach_activator')
       ic('update', config)

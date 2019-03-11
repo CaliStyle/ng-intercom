@@ -36,7 +36,8 @@ import { IntercomModule } from '../ng-intercom/intercom.module'
     SharedModule,
     IntercomModule.forRoot({
       appId: 'klwzj86j',
-      updateOnRouterChange: true
+      updateOnRouterChange: true,
+      alignment: 'left'
     }),
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
   ],
