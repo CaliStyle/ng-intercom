@@ -56,7 +56,6 @@ export class Intercom {
    * when the page loads. You call this method with the standard intercomSettings object.
    */
   public boot(intercomData?: BootInput): void {
-    console.log('brk', intercomData)
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
