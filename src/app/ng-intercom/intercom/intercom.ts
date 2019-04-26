@@ -1,7 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID, Optional, isDevMode, Renderer2, RendererFactory2, ViewEncapsulation } from '@angular/core'
-import { DOCUMENT } from '@angular/platform-browser'
 import { Router } from '@angular/router'
-import { isPlatformBrowser } from '@angular/common'
+import { DOCUMENT, isPlatformBrowser } from '@angular/common'
 
 import { IntercomConfig } from '../shared/intercom-config'
 import { BootInput } from '../types/boot-input'
