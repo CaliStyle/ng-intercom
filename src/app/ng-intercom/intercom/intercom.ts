@@ -67,7 +67,7 @@ export class Intercom {
         app_id
       }
 
-      return this.callIntercom('boot', data)
+      return this._callIntercom('boot', data)
     })
   }
 
@@ -79,11 +79,7 @@ export class Intercom {
    * This method will effectively clear out any user data that you have been passing through the JS API.
    */
   public shutdown(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-
-    return this.callIntercom('shutdown')
+    return this._callIntercom('shutdown')
   }
 
   /**
@@ -95,11 +91,7 @@ export class Intercom {
    * in addition to logging an impression at the current URL and looking for new messages for the user.
    */
   public update(data?: any): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-
-    return this.callIntercom('update', data)
+    return this._callIntercom('update', data)
 
   }
 
@@ -107,11 +99,7 @@ export class Intercom {
    * This will hide the main Messenger panel if it is open. It will not hide the Messenger Launcher.
    */
   public hide(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-
-    return this.callIntercom('hide')
+    return this._callIntercom('hide')
   }
 
   /**
@@ -122,14 +110,10 @@ export class Intercom {
    *
    */
   public show(message?: string): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-
     if (message) {
       return this.showNewMessage(message)
     }
-    return this.callIntercom('show')
+    return this._callIntercom('show')
 
   }
 
@@ -137,11 +121,7 @@ export class Intercom {
    * To open the message window with the message list you can call `showMessages()`.
    */
   public showMessages(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-
-    return this.callIntercom('showMessages')
+    return this._callIntercom('showMessages')
   }
 
   /**
@@ -150,10 +130,7 @@ export class Intercom {
    * This function takes an optional parameter that can be used to pre-populate the message composer as shown below.
    */
   public showNewMessage(message?: string): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-    return this.callIntercom('showNewMessage', message)
+    return this._callIntercom('showNewMessage', message)
 
   }
 
@@ -165,10 +142,7 @@ export class Intercom {
    * You can also add custom information to events in the form of event metadata.
    */
   public trackEvent(eventName: string, metadata?: any): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-    return this.callIntercom('trackEvent', eventName, metadata)
+    return this._callIntercom('trackEvent', eventName, metadata)
   }
 
 
@@ -178,11 +152,7 @@ export class Intercom {
    * This user_id can be used to retrieve the visitor or lead through the REST API.
    */
   public getVisitorId(): string {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-
-    return this.callIntercom('getVisitorId')
+    return this._callIntercom('getVisitorId')
   }
 
   /**
@@ -191,43 +161,49 @@ export class Intercom {
    * @readonly
    */
   get visitorId(): string {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-    return this.callIntercom('getVisitorId')
+    return this._callIntercom('getVisitorId')
   }
 
   /**
    * Gives you the ability to hook into the show event. Requires a function argument.
    */
   public onShow(handler: () => void): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-    return this.callIntercom('onShow', handler)
+    return this._callIntercom('onShow', handler)
   }
 
   /**
    * Gives you the ability to hook into the hide event. Requires a function argument.
    */
   public onHide(handler: () => void): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return
-    }
-    return this.callIntercom('onHide', handler)
+    return this._callIntercom('onHide', handler)
   }
 
   /**
    * This method allows you to register a function that will be called when the current number of unread messages changes.
    */
   public onUnreadCountChange(handler: (unreadCount?: number) => void): void {
+    return this._callIntercom('onUnreadCountChange', handler)
+  }
+
+  /**
+   * If you would like to trigger a tour based on an action a user or visitor takes in your site or application, 
+   * ou can use this API method. You need to call this method with the id of the tour you wish to show. The id of 
+   * the tour can be found in the “Use tour everywhere” section of the tour editor.
+   *
+   * Please note that tours shown via this API must be published and the “Use tour everywhere” section must be 
+   * turned on. If you're calling this API using an invalid tour id, nothing will happen.
+   */
+  public startTour(tourId: number): void {
+    return this._callIntercom('startTour', tourId)
+  }
+
+  /**
+   * Private handler to run Intercom methods safely
+   */
+  private _callIntercom(fn: string, ...args) {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    return this.callIntercom('onUnreadCountChange', handler)
-  }
-
-  private callIntercom(fn: string, ...args) {
     if ((<any>window).Intercom) {
       return (<any>window).Intercom(fn, ...args)
     }
