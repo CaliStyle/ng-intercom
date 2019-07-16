@@ -1,4 +1,4 @@
-import { BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser'
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser'
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
@@ -16,17 +16,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 // Service Worker
 import { ServiceWorkerModule } from '@angular/service-worker'
-
-// Intercom
-import { IntercomModule } from '../ng-intercom/intercom.module'
+import { NgrxPolyModule } from '../ngrx-poly'
+import { ngrxPolyConfig } from './store/config'
+import { StoreModule } from '@ngrx/store'
+import { reducers } from './store/reducers'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({
-      appId: 'proxy-engine-ng'
+      appId: 'proxy-engine-ng',
     }),
     HttpClientModule,
     BrowserTransferStateModule,
@@ -34,17 +35,13 @@ import { IntercomModule } from '../ng-intercom/intercom.module'
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    IntercomModule.forRoot({
-      appId: 'klwzj86j',
-      updateOnRouterChange: true,
-      alignment: 'left'
-    }),
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument(),
+    NgrxPolyModule.forRoot(ngrxPolyConfig),
   ],
   providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

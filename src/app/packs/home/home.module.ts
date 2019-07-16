@@ -8,19 +8,23 @@ import { homeRouter } from './home.router'
 // Handle Effects for this module
 import { EffectsModule } from '@ngrx/effects'
 import { HomeEffects } from './store/effects/home'
+import { StoreModule } from '@ngrx/store'
+import { reducers } from './store/reducers'
+import { NgrxPolyModule } from '../../ngrx-poly'
+import { homePolyConfig } from './store/config'
+import { HomeCollectionService } from './store/collections/home'
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     homeRouter,
+    StoreModule.forFeature('home', reducers),
+    NgrxPolyModule.forFeature('home', homePolyConfig),
     // EffectsModule.forFeature([ HomeEffects ]),
   ],
-  declarations: [
-    HomeComponent
-  ],
-  entryComponents: [
-    HomeComponent
-  ]
+  declarations: [HomeComponent],
+  entryComponents: [HomeComponent],
+  providers: [HomeCollectionService],
 })
-export class HomeModule { }
+export class HomeModule {}

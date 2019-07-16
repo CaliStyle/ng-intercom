@@ -20,25 +20,13 @@ export class LevelOneCollectionServiceBase<T> {
    */
   selectors = selectors<T>()
 
-  getEntities = createSelector(
-    this.entitySelector,
-    this.selectors.getAll
-  )
+  getEntities = state => state
 
-  getPagination = createSelector(
-    this.entitySelector,
-    this.selectors.getPagination
-  )
+  getPagination = state => state
 
-  getSelected = createSelector(
-    this.entitySelector,
-    this.selectors.getSelected
-  )
+  getSelected = state => state
 
-  getLoading = createSelector(
-    this.entitySelector,
-    this.selectors.getLoading
-  )
+  getLoading = state => state
 
   entities$: Observable<T[]> = this.store.pipe(select(this.getEntities))
   pagination$: Observable<Pagination> = this.store.pipe(select(this.getPagination))
@@ -47,16 +35,31 @@ export class LevelOneCollectionServiceBase<T> {
 
   private actionCreators = levelOneCommonActions<T>(this.helperService.featureName, this.entityName)
 
-  constructor(
-    public entityName: string,
-    public dataService: LevelOneDataServiceBase<T>,
-    public helperService: NgrxPolyHelperService,
-    public store: Store<any>
-  ) {
+  constructor(public entityName: string, public helperService: NgrxPolyHelperService, public store: Store<any>) {
     this.featureSelector = createFeatureSelector(helperService.featureName)
     this.entitySelector = createSelector(
       this.featureSelector,
       (state: { [key: string]: PolyState<T> }) => state[entityName]
+    )
+
+    this.getEntities = createSelector(
+      this.entitySelector,
+      this.selectors.getAll
+    )
+
+    this.getPagination = createSelector(
+      this.entitySelector,
+      this.selectors.getPagination
+    )
+
+    this.getSelected = createSelector(
+      this.entitySelector,
+      this.selectors.getSelected
+    )
+
+    this.getLoading = createSelector(
+      this.entitySelector,
+      this.selectors.getLoading
     )
   }
 

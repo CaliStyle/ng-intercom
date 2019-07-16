@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core'
 import { List } from '../types/list'
 
-export const GETTERS = new InjectionToken('GETTERS')
+export const GETTERS = new InjectionToken<Getters<any, any>>('GETTERS')
 
 const defaultGetters = {
   getRows: (response: List<any>) => response.rows,

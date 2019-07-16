@@ -4,5 +4,5 @@ import { POLY_FEATURE } from './feature'
 
 @Injectable()
 export class NgrxPolyHelperService {
-  constructor(@Inject(POLY_FEATURE) public featureName: string, @Inject(POLY_CONFIG) public config: PolyConfig<any, any>) {}
+  constructor(@Inject(POLY_FEATURE) public featureName: string, @Inject(POLY_CONFIG) public config: PolyConfig) {}
 }

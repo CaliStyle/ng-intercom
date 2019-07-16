@@ -1,18 +1,39 @@
 import { InjectionToken, Type } from '@angular/core'
-import { Getters } from './getters'
+import { Getters, getters } from './getters'
 import { List } from '../types/list'
 import { LevelOneDataServiceBase } from '../data/level-one-data-service'
 
-export const POLY_CONFIG = new InjectionToken<PolyConfig<any, any>>('POLY_CONFIG')
+export const POLY_CONFIG = new InjectionToken<PolyConfig>('POLY_CONFIG')
 
-export const defaultPolyConfig = {
-  initialState: {},
+export const defaultInitialState: PolyState<any> = {
+  entities: {},
+  ids: [],
+
+  loaded: true,
+  loading: false,
+
+  selectedId: null,
+
+  total: 0,
+  offset: 0,
+  limit: 0,
+  page: 0,
+  pages: 0,
+  filter: [],
+  sort: [[]],
+  includes: null,
+  error: null,
 }
 
-export interface PolyConfig<T, U> {
+export const defaultPolyConfig: PolyConfig = {
+  initialState: defaultInitialState,
+  getters: getters(),
+  dataServices: {},
+}
+
+export interface PolyConfig {
   initialState?: PolyState<any>
-  getters?: Getters<T, U>
-  selection?: 'router' | 'manual'
+  getters?: Getters<any, any>
   dataServices?: {
     [key: string]: Type<LevelOneDataServiceBase<any, any>>
   }

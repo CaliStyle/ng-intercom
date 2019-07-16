@@ -1,7 +1,7 @@
 import { ActionReducer } from '@ngrx/store'
 import { PolyAction } from '../actions/action'
 import { Op } from '../actions/operations'
-import { PolyState } from '../config/config'
+import { PolyState, defaultInitialState } from '../config/config'
 import { Pagination } from '../types/pagination'
 import { reduceEntityArray } from '../utils/reduce-entity-array'
 import { List } from '../types/list'
@@ -13,15 +13,18 @@ export interface On<S> {
 }
 
 export function createPolyReducer<T extends object>(
-  initialState: PolyState<T>,
+  /**
+   * pass null for a default configuration
+   */
+  initialState: PolyState<T> = null,
   feature: string,
   entity: string,
-  keyGetter: (obj: T) => string,
+  keyGetter: (obj: T) => string | number,
   ...ons: On<PolyState<T>>[]
 ) {
   const actionPrefix = 'ngrx-poly/' + (feature ? feature + '/' + entity + '/' : entity + '/')
   return createReducer(
-    initialState,
+    initialState || defaultInitialState,
     polyOn(actionPrefix, Op.FIND_ALL, Op.SEARCH, (state, payload: { [key: string]: any }) => ({
       ...state,
       loaded: false,
@@ -77,8 +80,8 @@ export function createPolyReducer<T extends object>(
       const entities = removeFromObj(state.entities, idToRemove)
       const ids = removeFromArray(state.ids, idToRemove)
 
-      let mergeObj: Partial<PolyState<T>> = {}
-      if (state.selectedId == idToRemove) {
+      const mergeObj: Partial<PolyState<T>> = {}
+      if (state.selectedId === idToRemove) {
         mergeObj.selectedId = null
       }
 
@@ -127,8 +130,8 @@ export function polyOn<S>(actionPrefix: string, ...args: (Op | ActionReducer<S, 
 
 export function createReducer<S>(initialState: S, ...ons: On<S>[]): ActionReducer<S> {
   const map = new Map<string, ActionReducer<S>>()
-  for (let on of ons) {
-    for (let type of on.types) {
+  for (const on of ons) {
+    for (const type of on.types) {
       map.set(type, on.reducer)
     }
   }

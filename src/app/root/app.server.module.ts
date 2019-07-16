@@ -13,8 +13,10 @@ import { AppRoutingModule } from './app.routing.module'
 import { SharedModule } from '../shared/shared.module'
 // For Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgrxPolyModule } from '../ngrx-poly'
+import { ngrxPolyConfig } from './store/config';
 
-import { IntercomModule } from '../ng-intercom/intercom.module'
+
 
 @NgModule({
   imports: [
@@ -26,11 +28,7 @@ import { IntercomModule } from '../ng-intercom/intercom.module'
     ModuleMapLoaderModule,
     BrowserAnimationsModule,
     SharedModule,
-    IntercomModule.forRoot({
-      appId: 'klwzj86j',
-      updateOnRouterChange: true,
-      alignment: 'left'
-    })
+    NgrxPolyModule.forRoot(ngrxPolyConfig)
   ],
   providers: [],
   bootstrap: [
