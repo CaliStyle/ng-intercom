@@ -10,9 +10,7 @@ import { EffectsModule } from '@ngrx/effects'
 import { HomeEffects } from './store/effects/home'
 import { StoreModule } from '@ngrx/store'
 import { reducers } from './store/reducers'
-import { NgrxPolyModule } from '../../ngrx-poly'
-import { homePolyConfig } from './store/config'
-import { HomeCollectionService } from './store/collections/home'
+import { HomeDataService } from './store/data/home'
 
 @NgModule({
   imports: [
@@ -20,11 +18,11 @@ import { HomeCollectionService } from './store/collections/home'
     SharedModule,
     homeRouter,
     StoreModule.forFeature('home', reducers),
-    NgrxPolyModule.forFeature('home', homePolyConfig),
+    EffectsModule.forFeature([HomeEffects]),
     // EffectsModule.forFeature([ HomeEffects ]),
   ],
   declarations: [HomeComponent],
   entryComponents: [HomeComponent],
-  providers: [HomeCollectionService],
+  providers: [HomeDataService],
 })
 export class HomeModule {}

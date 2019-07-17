@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core'
-import { List } from '../types/list'
+import { List } from '../../ngrx-poly/types/list'
 
 export const GETTERS = new InjectionToken<Getters<any, any>>('GETTERS')
 

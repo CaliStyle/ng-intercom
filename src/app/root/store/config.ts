@@ -1,4 +1,4 @@
-import { PolyConfig, LevelOneDataServiceBase } from '../../ngrx-poly'
+import { PolyConfig, LevelOneDataServiceBase } from '../../ngrx-poly-wip'
 import { InjectionToken, Injectable } from '@angular/core'
 
 @Injectable()

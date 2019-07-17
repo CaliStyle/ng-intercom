@@ -1,1 +1,4 @@
 <h1>500</h1>
+<ul>
+  <li *ngFor="let user of (usersService.entities$ | async)">{{user.name}}</li>
+</ul>

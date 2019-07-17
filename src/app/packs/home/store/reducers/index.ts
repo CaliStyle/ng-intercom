@@ -1,6 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store'
 import * as fromHome from './home'
-import { PolyState } from '../../../../ngrx-poly'
+import { PolyState } from '../../../../ngrx-poly-wip'
 import { Todo } from '../../models/Todo'
 
 /**

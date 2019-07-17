@@ -1,1 +1,1 @@
-export * from './src/app/ngrx-poly/index'
+export * from './src/app/ngrx-poly-wip/index'

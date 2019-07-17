@@ -11,8 +11,11 @@ import { Pagination } from '../types/pagination'
 
 @Injectable()
 export class LevelOneCollectionServiceBase<T> {
-  private featureSelector: MemoizedSelector<object, unknown, DefaultProjectorFn<unknown>>
-  private entitySelector: MemoizedSelector<ActionReducerMap<any>, PolyState<T>>
+  private featureSelector = createFeatureSelector(this.helperService.featureName)
+  private entitySelector = createSelector(
+    this.featureSelector,
+    (state: { [key: string]: PolyState<T> }) => state[this.entityName]
+  )
 
   /**
    * selectors.getSelected can be replaced with any NgRx selector to
@@ -20,13 +23,25 @@ export class LevelOneCollectionServiceBase<T> {
    */
   selectors = selectors<T>()
 
-  getEntities = state => state
+  getEntities = createSelector(
+    this.entitySelector,
+    this.selectors.getAll
+  )
 
-  getPagination = state => state
+  getPagination = createSelector(
+    this.entitySelector,
+    this.selectors.getPagination
+  )
 
-  getSelected = state => state
+  getSelected = createSelector(
+    this.entitySelector,
+    this.selectors.getSelected
+  )
 
-  getLoading = state => state
+  getLoading = createSelector(
+    this.entitySelector,
+    this.selectors.getLoading
+  )
 
   entities$: Observable<T[]> = this.store.pipe(select(this.getEntities))
   pagination$: Observable<Pagination> = this.store.pipe(select(this.getPagination))
@@ -35,33 +50,7 @@ export class LevelOneCollectionServiceBase<T> {
 
   private actionCreators = levelOneCommonActions<T>(this.helperService.featureName, this.entityName)
 
-  constructor(public entityName: string, public helperService: NgrxPolyHelperService, public store: Store<any>) {
-    this.featureSelector = createFeatureSelector(helperService.featureName)
-    this.entitySelector = createSelector(
-      this.featureSelector,
-      (state: { [key: string]: PolyState<T> }) => state[entityName]
-    )
-
-    this.getEntities = createSelector(
-      this.entitySelector,
-      this.selectors.getAll
-    )
-
-    this.getPagination = createSelector(
-      this.entitySelector,
-      this.selectors.getPagination
-    )
-
-    this.getSelected = createSelector(
-      this.entitySelector,
-      this.selectors.getSelected
-    )
-
-    this.getLoading = createSelector(
-      this.entitySelector,
-      this.selectors.getLoading
-    )
-  }
+  constructor(public entityName: string, public helperService: NgrxPolyHelperService, public store: Store<any>) {}
 
   findAll(query: any) {
     this.store.dispatch(this.actionCreators.findAll(query))

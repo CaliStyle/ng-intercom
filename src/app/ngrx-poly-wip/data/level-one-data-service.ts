@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Observable, of, EMPTY } from 'rxjs'
-import { List } from '../types/list'
+import { List } from '../../ngrx-poly/types/list'
 
 export abstract class LevelOneDataServiceBase<Entity, ListOfEntities = List<Entity>> {
   findAll(query: any): Observable<ListOfEntities> {

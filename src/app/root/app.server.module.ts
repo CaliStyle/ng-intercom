@@ -13,10 +13,6 @@ import { AppRoutingModule } from './app.routing.module'
 import { SharedModule } from '../shared/shared.module'
 // For Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgrxPolyModule } from '../ngrx-poly'
-import { ngrxPolyConfig } from './store/config';
-
-
 
 @NgModule({
   imports: [
@@ -28,13 +24,8 @@ import { ngrxPolyConfig } from './store/config';
     ModuleMapLoaderModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgrxPolyModule.forRoot(ngrxPolyConfig)
   ],
   providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent],
 })
-export class AppServerModule {
-
-}
+export class AppServerModule {}

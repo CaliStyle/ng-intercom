@@ -16,12 +16,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 // Service Worker
 import { ServiceWorkerModule } from '@angular/service-worker'
-import { NgrxPolyModule } from '../ngrx-poly'
+import { NgrxPolyModule } from '../ngrx-poly-wip'
 import { ngrxPolyConfig } from './store/config'
 import { StoreModule } from '@ngrx/store'
 import { reducers } from './store/reducers'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { EffectsModule } from '@ngrx/effects';
+import { EffectsModule } from '@ngrx/effects'
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +39,6 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
-    NgrxPolyModule.forRoot(ngrxPolyConfig),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,9 +3,9 @@ import { PolyAction } from '../actions/action'
 import { Op } from '../actions/operations'
 import { PolyState, defaultInitialState } from '../config/config'
 import { Pagination } from '../types/pagination'
-import { reduceEntityArray } from '../utils/reduce-entity-array'
-import { List } from '../types/list'
-import { removeFromObj, removeFromArray } from './utils'
+import { reduceEntityArray } from '../../ngrx-poly/utils/reduce-entity-array'
+import { List } from '../../ngrx-poly/types/list'
+import { removeFromObj, removeFromArray } from '../../ngrx-poly/reducers/utils'
 
 export interface On<S> {
   reducer: ActionReducer<S, PolyAction['payload']>

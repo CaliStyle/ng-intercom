@@ -22,13 +22,13 @@
     "baseUrl": ".",
     "paths": {
       "@app/actions/*": [
-        "./src/app/root/store/actions/*"
+        "wip/app/root/store/actions/*"
       ],
       "@app/effects/*": [
-        "./src/app/root/store/effects/*"
+        "wip/app/root/store/effects/*"
       ],
       "@app/reducers/*": [
-        "./src/app/root/store/reducers/*"
+        "wip/app/root/store/reducers/*"
       ]
     }
   }

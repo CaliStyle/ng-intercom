@@ -1,6 +1,6 @@
 import { InjectionToken, Type } from '@angular/core'
 import { Getters, getters } from './getters'
-import { List } from '../types/list'
+import { List } from '../../ngrx-poly/types/list'
 import { LevelOneDataServiceBase } from '../data/level-one-data-service'
 
 export const POLY_CONFIG = new InjectionToken<PolyConfig>('POLY_CONFIG')

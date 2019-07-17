@@ -1,9 +1,10 @@
-import { PolyState, PolyAction } from '../../../../ngrx-poly'
+import { Action } from '@ngrx/store'
+import { PolyState, ReducerCreators } from '../../../../ngrx-poly'
 import { Todo } from '../../models/Todo'
-import { createHomReducer } from '../config'
+import { homeActions } from '../actions'
 
-const homeReducer = createHomReducer('home', (todo: Todo) => todo.id)
+const homeReducer = ReducerCreators.createDepthOneReducer(homeActions, (todo: Todo) => todo.id)
 
-export function reducer(state: PolyState<Todo>, action: PolyAction): PolyState<Todo> {
+export function reducer(state: PolyState<Todo>, action: Action): PolyState<Todo> {
   return homeReducer(state, action)
 }

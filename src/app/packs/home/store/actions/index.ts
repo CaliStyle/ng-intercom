@@ -1,3 +1,1 @@
-import * as actions from './home'
-
-export { actions }
+export { homeActions } from './home'

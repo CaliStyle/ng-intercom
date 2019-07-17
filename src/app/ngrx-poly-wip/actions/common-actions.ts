@@ -1,4 +1,4 @@
-import { List } from '../types/list'
+import { List } from '../../ngrx-poly/types/list'
 import { createPolyAction } from './action-creator'
 import { Op } from './operations'
 
