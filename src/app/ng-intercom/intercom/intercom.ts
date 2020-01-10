@@ -1,5 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID, Optional, isDevMode, Renderer2, RendererFactory2, ViewEncapsulation } from '@angular/core'
-import { Router } from '@angular/router'
+import { filter } from 'rxjs/internal/operators/filter'
+import { Router, NavigationEnd } from '@angular/router'
 import { DOCUMENT, isPlatformBrowser } from '@angular/common'
 
 import { IntercomConfig } from '../shared/intercom-config'
@@ -36,7 +37,7 @@ export class Intercom {
 
     // Subscribe to router changes
     if (config && config.updateOnRouterChange) {
-      this.router.events.subscribe(event => {
+      this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
         this.update()
       })
     }
