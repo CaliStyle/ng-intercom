@@ -59,7 +59,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    const app_id = intercomData.app_id ? intercomData.app_id : this.config.appId
+    const app_id = intercomData && intercomData.app_id ? intercomData.app_id : this.config.appId
     // Run load and attach to window
     this.loadIntercom(this.config, (event?: Event) => {
       // then boot the intercom js
