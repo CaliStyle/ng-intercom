@@ -67,7 +67,6 @@
     "@angular/compiler-cli": "^10",
     "@angular/core": "^10",
     "@angular/forms": "^10",
-    "@angular/http": "^10",
     "@angular/language-service": "^10",
     "@angular/platform-browser": "^10",
     "@angular/platform-browser-dynamic": "^10",
