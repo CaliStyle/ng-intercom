@@ -59,7 +59,7 @@ export class Intercom {
     if (!isPlatformBrowser(this.platformId)) {
       return
     }
-    const app_id = intercomData.app_id ? intercomData.app_id : this.config.appId
+    const app_id = intercomData?.app_id ? intercomData.app_id : this.config.appId
     // Run load and attach to window
     this.loadIntercom(this.config, (event?: Event) => {
       // then boot the intercom js
@@ -187,11 +187,11 @@ export class Intercom {
   }
 
   /**
-   * If you would like to trigger a tour based on an action a user or visitor takes in your site or application, 
-   * ou can use this API method. You need to call this method with the id of the tour you wish to show. The id of 
+   * If you would like to trigger a tour based on an action a user or visitor takes in your site or application,
+   * ou can use this API method. You need to call this method with the id of the tour you wish to show. The id of
    * the tour can be found in the “Use tour everywhere” section of the tour editor.
    *
-   * Please note that tours shown via this API must be published and the “Use tour everywhere” section must be 
+   * Please note that tours shown via this API must be published and the “Use tour everywhere” section must be
    * turned on. If you're calling this API using an invalid tour id, nothing will happen.
    */
   public startTour(tourId: number): void {
